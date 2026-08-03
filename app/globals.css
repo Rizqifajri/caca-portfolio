@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAF9F6; /* Ivory Mist */
+  --foreground: #014421; /* Forest Green */
+}
+
+@theme {
+  --color-forest-green: #014421;
+  --color-crimson-red: #C80000;
+  --color-ivory-mist: #FAF9F6;
+  --font-cursive: var(--font-great-vibes);
 }
 
 body {
