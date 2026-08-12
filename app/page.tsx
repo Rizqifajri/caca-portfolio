@@ -1,7 +1,8 @@
 import { NavigationBar } from "@/components/navigation-bar";
 import { HeroSection } from "@/components/hero-section";
 import { ToolsSection } from "@/components/tools-section";
-import { ProjectsSection } from "@/components/projects-section";
+import { VideoProjectsSection } from "@/components/video-projects-section";
+import { GallerySection } from "@/components/gallery-section";
 import { ExperienceSection } from "@/components/experience-section";
 
 export default function Home() {
@@ -9,7 +10,8 @@ export default function Home() {
     <main>
       <HeroSection />
       <ToolsSection />
-      <ProjectsSection />
+      <VideoProjectsSection />
+      <GallerySection />
       <ExperienceSection />
     </main>
   );

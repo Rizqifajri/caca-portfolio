@@ -6,9 +6,7 @@ import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(Draggable, ScrollTrigger);
-}
+// Removed module-level registerPlugin
 
 export const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -142,88 +140,89 @@ export const HeroSection = () => {
   ];
 
   useEffect(() => {
+    gsap.registerPlugin(Draggable, ScrollTrigger);
     if (!containerRef.current) return;
-    const elements = containerRef.current.querySelectorAll('.scrapbook-item');
+    
+    const ctx = gsap.context(() => {
+      const elements = containerRef.current!.querySelectorAll('.scrapbook-item');
 
-    // Set initial rotations
-    elements.forEach((el, index) => {
-      gsap.set(el, { rotation: assets[index]?.rotation });
-    });
-
-    // Fall and scatter animation on load
-    gsap.fromTo(elements,
-      { y: -300, opacity: 0, scale: 0.8 },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 1.5,
-        stagger: 0.1,
-        ease: "bounce.out"
-      }
-    );
-
-    // Make them draggable
-    Draggable.create(elements, {
-      type: "x,y",
-      bounds: containerRef.current,
-    });
-
-    // About Section Text Animation
-    if (aboutTextRef.current) {
-      const chars = aboutTextRef.current.querySelectorAll('.split-char');
-      gsap.to(chars, {
-        opacity: 1,
-        stagger: 0.1,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: aboutTextRef.current,
-          start: 'top 85%',
-          end: 'center center',
-          scrub: 1, // Adding smoothing to prevent sudden jumps
-        }
+      // Set initial rotations
+      elements.forEach((el, index) => {
+        gsap.set(el, { rotation: assets[index]?.rotation });
       });
-    }
 
-    // About Section Heading Animation
-    if (aboutHeadingRef.current) {
-      gsap.fromTo(aboutHeadingRef.current,
-        { x: -30, opacity: 0 },
+      // Fall and scatter animation on load
+      gsap.fromTo(elements,
+        { y: -300, opacity: 0, scale: 0.8 },
         {
-          x: 0,
+          y: 0,
           opacity: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: aboutHeadingRef.current,
-            start: 'top 85%',
-            end: 'center center',
-            scrub: 1,
-          }
+          scale: 1,
+          duration: 1.5,
+          stagger: 0.1,
+          ease: "bounce.out"
         }
       );
-    }
 
-    // About Section Image Animation
-    if (aboutImageRef.current) {
-      gsap.fromTo(aboutImageRef.current,
-        { opacity: 0 },
-        {
+      // Make them draggable
+      Draggable.create(elements, {
+        type: "x,y",
+        bounds: containerRef.current,
+      });
+
+      // About Section Text Animation
+      if (aboutTextRef.current) {
+        const chars = aboutTextRef.current.querySelectorAll('.split-char');
+        gsap.to(chars, {
           opacity: 1,
+          stagger: 0.1,
           ease: 'none',
           scrollTrigger: {
-            trigger: aboutImageRef.current,
+            trigger: aboutTextRef.current,
             start: 'top 85%',
             end: 'center center',
-            scrub: 1,
+            scrub: 1, // Adding smoothing to prevent sudden jumps
           }
-        }
-      );
-    }
+        });
+      }
 
-    return () => {
-      Draggable.get(elements)?.kill?.();
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
+      // About Section Heading Animation
+      if (aboutHeadingRef.current) {
+        gsap.fromTo(aboutHeadingRef.current,
+          { x: -30, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: aboutHeadingRef.current,
+              start: 'top 85%',
+              end: 'center center',
+              scrub: 1,
+            }
+          }
+        );
+      }
+
+      // About Section Image Animation
+      if (aboutImageRef.current) {
+        gsap.fromTo(aboutImageRef.current,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: aboutImageRef.current,
+              start: 'top 85%',
+              end: 'center center',
+              scrub: 1,
+            }
+          }
+        );
+      }
+    }, containerRef);
+    
+    return () => ctx.revert();
   }, []);
 
   return (

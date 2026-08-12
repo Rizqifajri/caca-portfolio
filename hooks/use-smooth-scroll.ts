@@ -47,6 +47,12 @@ export const useSmoothScroll = () => {
     window.addEventListener('scroll', onScroll);
     window.addEventListener('resize', setBodyHeight);
     
+    // Add ResizeObserver to watch for content height changes dynamically
+    const resizeObserver = new ResizeObserver(() => {
+      setBodyHeight();
+    });
+    resizeObserver.observe(container);
+    
     // Add update function to GSAP ticker for 60fps smoothing
     gsap.ticker.add(update);
 
@@ -54,6 +60,7 @@ export const useSmoothScroll = () => {
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', setBodyHeight);
+      resizeObserver.disconnect();
       gsap.ticker.remove(update);
       document.body.style.height = '';
       gsap.set(container, { clearProps: 'all' });

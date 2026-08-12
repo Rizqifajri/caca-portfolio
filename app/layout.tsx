@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 };
 
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { Footer } from "@/components/footer";
 
 export default function RootLayout({
   children,
@@ -35,7 +36,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <NavigationBar />
         <SmoothScroll>
-          {children}
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
         </SmoothScroll>
       </body>
     </html>

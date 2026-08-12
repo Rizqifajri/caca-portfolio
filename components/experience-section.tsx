@@ -4,52 +4,86 @@ export const ExperienceSection = () => {
   const experiences = [
     {
       id: 1,
-      role: 'Senior Video Editor',
-      company: 'Creative Agency Co.',
-      period: '2023 - Present',
-      description: 'Lead video editor for commercial projects, managing a team of junior editors and handling end-to-end post-production for high-profile clients.',
+      role: 'Video Editor',
+      company: 'Seva',
+      period: '2021 - Present',
+      description: 'Spearheaded video editing and post-production for various promotional campaigns, ensuring high-quality visual storytelling and brand consistency.',
+      align: 'right' // Company/Role on the right
     },
     {
       id: 2,
-      role: 'Freelance Video Editor',
-      company: 'Self-Employed',
-      period: '2021 - 2023',
-      description: 'Collaborated with various YouTube creators and small businesses to produce engaging social media content, resulting in significant audience growth.',
-    },
-    {
-      id: 3,
-      role: 'Video Editor Intern',
-      company: 'Media Startup Inc.',
-      period: '2020 - 2021',
-      description: 'Assisted in editing promotional videos, color grading, and audio mixing. Gained hands-on experience in fast-paced production environments.',
-    },
+      role: 'Video Editor',
+      company: 'Cretivox',
+      period: '2017 - 2020',
+      description: 'Handled end-to-end video production, focusing on engaging content creation, motion graphics, and dynamic pacing for digital platforms.',
+      align: 'left' // Company/Role on the left
+    }
   ];
 
   return (
-    <section id="experience" className="py-24 px-6 md:px-16 bg-ivory-mist text-forest-green font-sans">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-light tracking-tighter mb-16 text-forest-green">
-          Experience
-        </h2>
+    <section id="experience" className="py-24 px-6 md:px-16 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+        
+        {/* Header */}
+        <div className="mb-12">
+          <h2 className="text-[#a82525] text-5xl md:text-7xl font-cursive italic tracking-wide">
+            Experiences
+          </h2>
+        </div>
 
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col">
+          {/* Top dashed line */}
+          <div className="w-full border-t-[2px] border-dashed border-gray-300"></div>
+
           {experiences.map((exp) => (
-            <div key={exp.id} className="group flex flex-col md:flex-row gap-4 md:gap-12 border-t border-forest-green/20 pt-8 transition-colors hover:border-crimson-red/50">
-              <div className="md:w-1/3 flex-shrink-0">
-                <p className="text-crimson-red font-semibold mb-2">{exp.period}</p>
-                <h3 className="text-2xl font-medium tracking-tight text-forest-green group-hover:text-crimson-red transition-colors">
-                  {exp.company}
-                </h3>
+            <React.Fragment key={exp.id}>
+              <div className="py-12 md:py-16 flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full">
+                
+                {exp.align === 'right' ? (
+                  <>
+                    {/* Date and Description on Left */}
+                    <div className="w-full md:w-1/2 flex flex-col justify-center">
+                      <p className="text-[#2b5a2b] font-medium mb-3">{exp.period}</p>
+                      <p className="text-[#2b5a2b] leading-relaxed max-w-md text-sm md:text-base">
+                        {exp.description}
+                      </p>
+                    </div>
+                    {/* Title on Right */}
+                    <div className="w-full md:w-1/2 flex justify-start md:justify-end items-center">
+                      <h3 className="text-4xl md:text-6xl font-cursive italic">
+                        <span className="text-[#2b5a2b]">{exp.company}</span>
+                        <span className="text-[#2b5a2b] font-sans mx-2 text-3xl">-</span>
+                        <span className="text-[#a82525]">{exp.role}</span>
+                      </h3>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {/* Title on Left */}
+                    <div className="w-full md:w-1/2 flex justify-start items-center order-2 md:order-1">
+                      <h3 className="text-4xl md:text-6xl font-cursive italic">
+                        <span className="text-[#2b5a2b]">{exp.company}</span>
+                        <span className="text-[#2b5a2b] font-sans mx-2 text-3xl">-</span>
+                        <span className="text-[#a82525]">{exp.role}</span>
+                      </h3>
+                    </div>
+                    {/* Date and Description on Right */}
+                    <div className="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-2 md:pl-12">
+                      <p className="text-[#2b5a2b] font-medium mb-3">{exp.period}</p>
+                      <p className="text-[#2b5a2b] leading-relaxed max-w-md text-sm md:text-base">
+                        {exp.description}
+                      </p>
+                    </div>
+                  </>
+                )}
+                
               </div>
-              <div className="md:w-2/3">
-                <h4 className="text-xl font-medium mb-4">{exp.role}</h4>
-                <p className="text-forest-green/80 leading-relaxed">
-                  {exp.description}
-                </p>
-              </div>
-            </div>
+              {/* Bottom dashed line */}
+              <div className="w-full border-t-[2px] border-dashed border-gray-300"></div>
+            </React.Fragment>
           ))}
         </div>
+        
       </div>
     </section>
   );
