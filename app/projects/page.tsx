@@ -61,12 +61,12 @@ export default function ProjectsPage() {
   const getTag = (url: string) => url.includes('instagram.com') ? 'INSTAGRAM' : (url.includes('tiktok.com') ? 'TIKTOK' : 'VIDEO');
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] py-24 px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#FAF9F6] py-24 relative overflow-hidden">
       {/* Decorative Icons */}
       <img src="/icons/sun-flower.svg" className="absolute top-[5%] left-[5%] w-24 h-24 object-contain opacity-50 z-0" alt="decoration" />
       <img src="/icons/red-flower.svg" className="absolute bottom-[10%] right-[8%] w-20 h-20 object-contain opacity-50 z-0" alt="decoration" />
 
-      <div className="max-w-6xl mx-auto z-10 relative">
+      <div className="w-full px-6 md:px-16 z-10 relative">
         <div className="text-center mb-20">
           <h1 className="text-[#a82525] text-5xl md:text-7xl font-cursive italic tracking-wide">
             All Projects

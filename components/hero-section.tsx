@@ -23,14 +23,14 @@ export const HeroSection = () => {
       desktop: { size: 300, top: 16, left: 22 },
       macbook: { size: 250, top: 16, left: 17 },
       tablet: { size: 200, top: 30, left: 15 },
-      mobile: { size: 100, top: 12, left: 10 },
+      mobile: { size: 100, top: 10, left: 10 },
     },
     {
       id: 2, src: '/icons/red-star.svg', rotation: 12, zIndex: 11,
       desktop: { size: 400, top: 5, left: 27 },
       macbook: { size: 300, top: 5, left: 24 },
       tablet: { size: 250, top: 24, left: 23 },
-      mobile: { size: 120, top: 5, left: 15 },
+      mobile: { size: 120, top: 10, left: 10 },
     },
     {
       id: 3, src: '/icons/ribbon-green.svg', rotation: -8, zIndex: 12,

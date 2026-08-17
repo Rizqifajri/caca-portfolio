@@ -8,7 +8,7 @@ export const ContactSection = () => {
       <img 
         src="/icons/telephone.svg" 
         alt="Telephone" 
-        className="absolute left-[5%] md:left-[10%] top-0 w-24 md:w-48 h-auto object-contain z-10 drop-shadow-xl" 
+        className="absolute left-[5%] md:left-[10%] top-0 w-24 md:w-96 h-auto object-contain z-10 drop-shadow-xl" 
       />
 
       {/* Snoopy */}

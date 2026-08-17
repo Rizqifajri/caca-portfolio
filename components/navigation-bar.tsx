@@ -38,8 +38,8 @@ export const NavigationBar = () => {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Project', href: '/#projects' },
-    { name: 'Gallery', href: '/#gallery' },
+    { name: 'Project', href: '/projects' },
+    { name: 'Gallery', href: '/gallery' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -60,7 +60,7 @@ export const NavigationBar = () => {
         <ul className="hidden md:flex gap-10 text-[#2b5a2b] text-lg font-medium tracking-wide">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <Link href={link.href} className="hover:text-[#a82525] hover:underline transition-all duration-300">
+              <Link href={link.href} className="hover:text-[#a82525] hover:underline transition-all duration-300 font-light italic text-xl opacity-80">
                 {link.name}
               </Link>
             </li>

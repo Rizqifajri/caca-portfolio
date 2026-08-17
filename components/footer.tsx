@@ -8,13 +8,13 @@ export const Footer = () => {
       <img src="/icons/sun-flower.svg" className="absolute -top-10 -right-10 w-40 h-40 object-contain opacity-20 z-0" alt="decoration" />
       <img src="/icons/red-flower.svg" className="absolute -bottom-10 -left-10 w-32 h-32 object-contain opacity-20 z-0" alt="decoration" />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="w-full px-6 md:px-16 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-12">
           
           {/* Brand/Logo Section */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <h2 className="text-[#008000] text-4xl font-cursive italic tracking-widest mb-2">
-              Portfolio
+              Cantika Fitriani
             </h2>
             <p className="text-gray-600 text-sm max-w-xs leading-relaxed">
               Crafting visual stories through creative video editing and animation. Let's make something amazing together.

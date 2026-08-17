@@ -35,7 +35,7 @@ export const ToolsSection = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative min-h-screen overflow-hidden flex flex-col md:flex-row items-center justify-center pt-20 pb-40 px-6 md:px-24 lg:px-56">
+    <section ref={containerRef} className="relative min-h-screen overflow-hidden flex flex-col md:flex-row items-center justify-center pt-20 pb-40 px-6 md:px-16 lg:px-24">
       
       {/* Title (Left Side) */}
       <div className="w-full md:w-1/2 text-center z-10 mb-20 md:mb-0 flex flex-col items-center justify-center">

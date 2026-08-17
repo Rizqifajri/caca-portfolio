@@ -71,8 +71,8 @@ export const GallerySection = () => {
 
   return (
     <section ref={containerRef} className="relative py-24 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 relative">
-        
+      <div className="w-full px-6 md:px-16 relative">
+
         {/* Header */}
         <div className="text-center mb-16 md:mb-24">
           <h2 className="text-[#a82525] text-5xl md:text-7xl font-cursive italic tracking-wide">
@@ -82,30 +82,45 @@ export const GallerySection = () => {
 
         {/* Gallery Content Wrapper */}
         <div className="relative w-full md:w-[90%] mx-auto">
-          
-          {/* Decorative Camera */}
-          <div ref={cameraRef} className="hidden md:block absolute top-[-15%] left-[-25%] z-20 pointer-events-none">
-             <img src="/icons/camera-pocket.svg" className="w-[350px] h-[350px] lg:w-[450px] lg:h-[450px] object-contain transform -rotate-12 drop-shadow-2xl" alt="camera decoration" />
+
+          {/* Decorative Camera and Film */}
+          <div ref={cameraRef} className="hidden md:block absolute top-[-15%] -left-[5%] z-20 pointer-events-none">
+            {/* Red Film (Behind) */}
+            <img src="/icons/film.svg" className="absolute -top-[35%] -left-5 w-[300px] h-[300px] lg:w-[700px] lg:h-[700px] object-contain transform rotate-70 drop-shadow-xl -z-10" alt="red film decoration" />
+            {/* Camera (Front) */}
+            <img src="/icons/camera-pocket.svg" className="relative w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] object-contain transform -rotate-12 drop-shadow-2xl z-10" alt="camera decoration" />
           </div>
 
           {/* Gallery Grid */}
           <div className="flex flex-col gap-6 md:gap-8 mb-8 z-10 relative">
-            
+
             {/* Top Row */}
             <div className="flex justify-start md:justify-end w-full overflow-hidden">
               <div ref={topRowRef} className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 w-full md:w-[75%]">
-                <div className="aspect-square bg-[#d9d9d9] shadow-md border-4 border-white"></div>
-                <div className="aspect-square bg-[#d9d9d9] shadow-md border-4 border-white"></div>
-                <div className="hidden md:block aspect-square bg-[#d9d9d9] shadow-md border-4 border-white"></div>
+                <div className="aspect-square shadow-md overflow-hidden relative">
+                  <img src="/gallery/DSCF0021.JPG" alt="Gallery 1" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="aspect-square shadow-md overflow-hidden relative">
+                  <img src="/gallery/DSCF0071.JPG" alt="Gallery 2" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="hidden md:block aspect-square shadow-md overflow-hidden relative">
+                  <img src="/gallery/DSCF0469.JPG" alt="Gallery 3" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
               </div>
             </div>
-            
+
             {/* Bottom Row */}
             <div className="flex justify-end w-full overflow-hidden mt-4 md:mt-0">
               <div ref={bottomRowRef} className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 w-full md:w-[95%]">
-                <div className="aspect-square bg-[#d9d9d9] shadow-md border-4 border-white"></div>
-                <div className="aspect-square bg-[#d9d9d9] shadow-md border-4 border-white"></div>
-                <div className="hidden md:block aspect-square bg-[#d9d9d9] shadow-md border-4 border-white"></div>
+                <div className="aspect-square shadow-md overflow-hidden relative">
+                  <img src="/gallery/DSCF0884.JPG" alt="Gallery 4" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="aspect-square shadow-md overflow-hidden relative">
+                  <img src="/gallery/DSCF1032.JPG" alt="Gallery 5" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="hidden md:block aspect-square shadow-md overflow-hidden relative">
+                  <img src="/gallery/DSCF1459.JPG" alt="Gallery 6" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
               </div>
             </div>
 
@@ -120,7 +135,7 @@ export const GallerySection = () => {
               See more
             </Link>
           </div>
-          
+
         </div>
       </div>
     </section>

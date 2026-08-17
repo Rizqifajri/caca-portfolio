@@ -23,10 +23,10 @@ export const ExperienceSection = () => {
   return (
     <section id="experience" className="py-24 px-6 md:px-16 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        
+
         {/* Header */}
         <div className="mb-12">
-          <h2 className="text-[#a82525] text-5xl md:text-7xl font-cursive italic tracking-wide">
+          <h2 className="text-[#a82525] text-5xl md:text-8xl font-cursive italic tracking-wide">
             Experiences
           </h2>
         </div>
@@ -38,7 +38,7 @@ export const ExperienceSection = () => {
           {experiences.map((exp) => (
             <React.Fragment key={exp.id}>
               <div className="py-12 md:py-16 flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full">
-                
+
                 {exp.align === 'right' ? (
                   <>
                     {/* Date and Description on Left */}
@@ -76,14 +76,14 @@ export const ExperienceSection = () => {
                     </div>
                   </>
                 )}
-                
+
               </div>
               {/* Bottom dashed line */}
               <div className="w-full border-t-[2px] border-dashed border-gray-300"></div>
             </React.Fragment>
           ))}
         </div>
-        
+
       </div>
     </section>
   );

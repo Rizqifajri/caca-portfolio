@@ -68,10 +68,10 @@ export const VideoProjectsSection = () => {
       <img src="/icons/sun-flower.svg" className="absolute top-[20%] right-[-5%] w-48 h-48 object-contain z-0" alt="sunflower" />
       <img src="/icons/sun-flower.svg" className="absolute bottom-[20%] left-[-5%] w-64 h-64 object-contain z-0" alt="sunflower" />
 
-      <div className="max-w-6xl mx-auto px-6 z-10 relative">
+      <div className="w-full px-6 md:px-16 z-10 relative">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16">
-          <h2 className="text-[#a82525] text-5xl md:text-7xl font-cursive italic tracking-wide">
+          <h2 className="text-[#a82525] text-5xl md:text-9xl font-cursive italic tracking-wide">
             Projects
           </h2>
           <p className="text-gray-700 max-w-sm text-right text-sm md:text-base mt-4 md:mt-0 font-sans">
