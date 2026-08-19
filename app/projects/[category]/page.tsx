@@ -61,7 +61,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ cate
           Back to All Projects
         </Link>
 
-        <div className="text-center mb-16">
+        <div className="text-left mb-16">
           <div className="inline-block relative">
             <h1 className="text-[#a82525] text-5xl md:text-7xl font-cursive italic tracking-wide pb-2 capitalize">
               {title}
@@ -74,7 +74,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ cate
         {/* Top Viewers Section */}
         {topViewers.length > 0 && (
           <div className="mb-16">
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-start mb-8">
               <div className="inline-block relative">
                 <h2 className="text-[#a82525] text-3xl md:text-4xl font-cursive italic tracking-wide pb-1">
                   Top Viewers
@@ -121,7 +121,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ cate
         {urls.length > 0 && (
           <div>
             {topViewers.length > 0 && (
-              <div className="flex justify-center mb-8">
+              <div className="flex justify-start mb-8">
                 <div className="inline-block relative">
                   <h2 className="text-[#a82525] text-3xl md:text-4xl font-cursive italic tracking-wide pb-1">
                     All Projects

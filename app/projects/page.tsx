@@ -67,7 +67,7 @@ export default function ProjectsPage() {
       <img src="/icons/red-flower.svg" className="absolute bottom-[10%] right-[8%] w-20 h-20 object-contain opacity-50 z-0" alt="decoration" />
 
       <div className="w-full px-6 md:px-16 z-10 relative">
-        <div className="text-center mb-20">
+        <div className="text-left mb-20">
           <h1 className="text-[#a82525] text-5xl md:text-7xl font-cursive italic tracking-wide">
             All Projects
           </h1>
@@ -80,7 +80,7 @@ export default function ProjectsPage() {
           return (
             <div key={index} className="mb-24 last:mb-0">
               {/* Section Header */}
-              <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b-2 border-dashed border-[#008000]/30 pb-4">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 border-b-2 border-dashed border-[#008000]/30 pb-4">
                 <h2 className="text-[#008000] text-4xl font-cursive italic tracking-wide">
                   {category.title}
                 </h2>

@@ -51,22 +51,19 @@ export const BrandSection = () => {
           style={{ background: 'linear-gradient(to left, #FAF9F6 30%, transparent)' }} />
 
         <div
-          className="flex items-center marquee-left whitespace-nowrap"
-          style={{ gap: GAP }}
+          className="flex items-center marquee-left whitespace-nowrap gap-8 md:gap-[56px]"
         >
           {trackRow1.map((logo, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex items-center justify-center"
-              style={{ width: LOGO_W, height: LOGO_H }}
+              className="flex-shrink-0 flex items-center justify-center w-[100px] md:w-[180px] h-[60px] md:h-[100px]"
             >
               <Image
                 src={logo.src}
                 alt={logo.alt}
                 width={LOGO_W}
                 height={LOGO_H}
-                className="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-50 hover:opacity-100 select-none"
-                style={{ maxWidth: LOGO_W, maxHeight: LOGO_H }}
+                className="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-50 hover:opacity-100 select-none w-full h-full max-w-[100px] md:max-w-[180px] max-h-[60px] md:max-h-[100px]"
               />
             </div>
           ))}
@@ -82,24 +79,20 @@ export const BrandSection = () => {
           style={{ background: 'linear-gradient(to left, #FAF9F6 30%, transparent)' }} />
 
         <div
-          className="flex items-center marquee-right whitespace-nowrap"
-          style={{ gap: GAP }}
+          className="flex items-center marquee-right whitespace-nowrap gap-8 md:gap-[56px]"
         >
           {trackRow2.map((logo, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex items-center justify-center"
-              style={{ width: LOGO_W, height: LOGO_H }}
+              className="flex-shrink-0 flex items-center justify-center w-[100px] md:w-[180px] h-[60px] md:h-[100px]"
             >
               <Image
                 src={logo.src}
                 alt={logo.alt}
                 width={LOGO_W}
                 height={LOGO_H}
-                className="object-contain transition-all duration-300 select-none opacity-50 hover:opacity-100"
+                className="object-contain transition-all duration-300 select-none opacity-50 hover:opacity-100 w-full h-full max-w-[100px] md:max-w-[180px] max-h-[60px] md:max-h-[100px]"
                 style={{
-                  maxWidth: LOGO_W,
-                  maxHeight: LOGO_H,
                   filter: logo.forceGray
                     ? 'brightness(0) opacity(0.55)'
                     : 'grayscale(1)',

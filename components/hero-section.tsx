@@ -37,7 +37,7 @@ export const HeroSection = () => {
       desktop: { size: 300, top: 35, left: 20 },
       macbook: { size: 220, top: 35, left: 15 },
       tablet: { size: 160, top: 40, left: 10 },
-      mobile: { size: 100, top: 30, left: 5 },
+      mobile: { size: 100, top: 10, left: 10 },
     },
     {
       id: 4, src: '/icons/teratai.svg', rotation: 5, zIndex: 9,
@@ -324,8 +324,8 @@ export const HeroSection = () => {
           </div>
 
           {/* Image Container (Right) */}
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end relative min-h-[400px] md:min-h-[500px]">
-            <div ref={aboutImageRef} className="absolute inset-0 w-full h-full">
+          <div className="w-full md:w-1/2 flex justify-center md:justify-end relative min-h-[330px] sm:min-h-[400px] md:min-h-[500px]">
+            <div ref={aboutImageRef} className="absolute inset-0 w-full h-full" >
               <Image
                 src="/profile/caca-profile-v2.jpeg"
                 alt="Profile of Calu"
