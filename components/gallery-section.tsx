@@ -131,8 +131,9 @@ export const GallerySection = () => {
             <p className="text-gray-700 max-w-xs text-xs md:text-sm font-sans mb-4 md:mb-0 leading-relaxed">
               Explore a curated collection of my visual memories, behind-the-scenes moments, and photography.
             </p>
-            <Link href="/gallery" className="text-[#a82525] hover:underline font-medium text-sm md:text-base whitespace-nowrap">
+            <Link href="/gallery" className="group inline-flex items-center gap-2 bg-[#a82525] text-white px-6 py-2.5 rounded-full font-medium text-sm md:text-base hover:bg-[#8a1e1e] transition-all hover:scale-105 shadow-md whitespace-nowrap">
               See more
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </Link>
           </div>
 

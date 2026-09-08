@@ -28,20 +28,11 @@ export const VideoThumbnail = ({ url }: { url: string }) => {
       });
   }, [url]);
 
-  if (isLoading) {
+  if (isLoading || isError || !thumb) {
     return (
       <div className="absolute inset-0 bg-gray-200 animate-pulse flex flex-col items-center justify-center">
-        <ImageIcon className="w-8 h-8 text-gray-400 mb-2 animate-bounce" />
+        <ImageIcon className="w-8 h-8 text-gray-400 mb-2 animate-pulse" />
         <div className="w-1/2 h-2 bg-gray-300 rounded-full"></div>
-      </div>
-    );
-  }
-
-  if (isError || !thumb) {
-    return (
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 flex flex-col items-center justify-center group-hover:scale-105 transition-transform duration-500">
-        <VideoIcon className="w-10 h-10 text-gray-400 mb-2" />
-        <span className="text-xs text-gray-500 font-medium">Preview Unavailable</span>
       </div>
     );
   }
