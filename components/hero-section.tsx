@@ -23,14 +23,14 @@ export const HeroSection = () => {
       desktop: { size: 300, top: 16, left: 22 },
       macbook: { size: 250, top: 16, left: 17 },
       tablet: { size: 200, top: 30, left: 15 },
-      mobile: { size: 100, top: 10, left: 10 },
+      mobile: { size: 100, top: 24, left: 10 },
     },
     {
       id: 2, src: '/icons/red-star.svg', rotation: 12, zIndex: 11,
       desktop: { size: 400, top: 5, left: 27 },
       macbook: { size: 300, top: 5, left: 24 },
       tablet: { size: 250, top: 24, left: 23 },
-      mobile: { size: 120, top: 10, left: 10 },
+      mobile: { size: 120, top: 33, left: 25 },
     },
     {
       id: 3, src: '/icons/ribbon-green.svg', rotation: -8, zIndex: 12,
@@ -143,6 +143,8 @@ export const HeroSection = () => {
     gsap.registerPlugin(Draggable, ScrollTrigger);
     if (!containerRef.current) return;
     
+    let draggables: globalThis.Draggable[] = [];
+
     const ctx = gsap.context(() => {
       const elements = containerRef.current!.querySelectorAll('.scrapbook-item');
 
@@ -165,7 +167,7 @@ export const HeroSection = () => {
       );
 
       // Make them draggable
-      Draggable.create(elements, {
+      draggables = Draggable.create(elements, {
         type: "x,y",
         bounds: containerRef.current,
       });
@@ -222,17 +224,35 @@ export const HeroSection = () => {
       }
     }, containerRef);
     
-    return () => ctx.revert();
+    return () => {
+      if (draggables && draggables.length > 0) {
+        draggables.forEach(d => d.kill());
+      }
+      ctx.revert();
+    };
   }, []);
 
   return (
     <>
       <section
         ref={containerRef}
-        className="flex flex-col min-h-[calc(100vh-90px)] bg-ivory-mist text-forest-green relative overflow-hidden font-sans items-center justify-center"
+        className="flex flex-col h-[calc(100dvh-90px)] min-h-[500px] bg-ivory-mist text-forest-green relative overflow-hidden font-sans items-center justify-end md:justify-center"
       >
+        {/* Mobile Background Image */}
+        <div className="block md:hidden absolute inset-0 z-10">
+          <Image
+            src="/profile/caca-profile-v2.jpeg"
+            alt="Cantika Profile"
+            fill
+            className="object-contain"
+            priority
+          />
+          {/* Optional subtle gradient at bottom for text readability on mobile */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/0 to-white/0 h-1/2 mt-auto" />
+        </div>
+
         {/* Center Text Composition */}
-        <div className="relative z-20 flex flex-col items-center justify-center text-center pointer-events-none w-full px-4">
+        <div className="relative z-20 flex flex-col items-center justify-center text-center pointer-events-none w-full px-4 pb-8 md:pb-0" translate="no">
           <p className="text-xl md:text-2xl lg:text-3xl font-medium text-forest-green mb-0 md:mb-2 tracking-wide">
             Hello, im
           </p>
@@ -245,8 +265,8 @@ export const HeroSection = () => {
         </div>
 
         {/* Responsive Styles for Assets */}
-        <style dangerouslySetInnerHTML={{
-          __html: assets.map(asset => `
+        <style>{
+          assets.map(asset => `
             .asset-${asset.id} {
               width: ${asset.mobile.size}px;
               height: ${asset.mobile.size}px;
@@ -277,11 +297,11 @@ export const HeroSection = () => {
                 left: ${asset.desktop.left}%;
               }
             }
-          `).join('\\n')
-        }} />
+          `).join('\n')
+        }</style>
 
-        {/* Draggable Scrapbook Items */}
-        <div className="absolute inset-0 z-30 pointer-events-none overflow-hidden">
+        {/* Draggable Scrapbook Items (Hidden on Mobile) */}
+        <div className="hidden md:block absolute inset-0 z-30 pointer-events-none overflow-hidden">
           {assets.map((asset) => (
             <div
               key={asset.id}
@@ -305,10 +325,10 @@ export const HeroSection = () => {
       </section>
 
       {/* About Me Section */}
-      <section id="about" className="text-[#333333] px-6 md:px-16 py-12 md:py-24 relative z-40 overflow-hidden">
-        <div className="w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-stretch bg-[#EFD3E1]">
+      <section id="about" className="text-[#333333] px-6 md:px-16 py-12 md:py-24 relative z-40 overflow-hidden bg-transparent">
+        <div className="w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-stretch md:bg-[#EFD3E1] bg-transparent">
           {/* Text Container (Left) */}
-          <div className="w-full md:w-1/2 flex flex-col items-start justify-center text-left px-8 md:px-12 lg:px-16 py-12 md:py-16">
+          <div className="w-full md:w-1/2 flex flex-col items-start justify-center text-left px-4 md:px-12 lg:px-16 py-8 md:py-16">
             <h2 ref={aboutHeadingRef} className="text-4xl md:text-5xl lg:text-6xl text-[#a82525] font-sans mb-6">
               Hi, its me Calu!
             </h2>
@@ -323,8 +343,8 @@ export const HeroSection = () => {
             </p>
           </div>
 
-          {/* Image Container (Right) */}
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end relative min-h-[330px] sm:min-h-[400px] md:min-h-[500px]">
+          {/* Image Container (Right) - Hidden on Mobile since it's already in the Hero */}
+          <div className="hidden md:flex w-full md:w-1/2 justify-center md:justify-end relative min-h-[330px] sm:min-h-[400px] md:min-h-[500px]">
             <div ref={aboutImageRef} className="absolute inset-0 w-full h-full" >
               <Image
                 src="/profile/caca-profile-v2.jpeg"
@@ -334,7 +354,6 @@ export const HeroSection = () => {
               />
             </div>
           </div>
-
         </div>
       </section>
     </>

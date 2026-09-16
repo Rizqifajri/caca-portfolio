@@ -53,14 +53,14 @@ export const VideoProjectsSection = () => {
     return () => ctx.revert();
   }, []);
 
-  // Combine and sort top videos if needed (just slicing top 6 for now)
+  // Combine and sort top videos if needed (just slicing top 8 for now)
   const viralVideos = [
     ...(projectsData.cretivox?.igTopViewers || []),
     ...(projectsData.cretivox?.tiktokTopViewers || [])
-  ].slice(0, 6);
+  ].slice(0, 8);
 
-  const topRowVideos = viralVideos.slice(0, 3);
-  const bottomRowVideos = viralVideos.slice(3, 6);
+  const topRowVideos = viralVideos.slice(0, 4);
+  const bottomRowVideos = viralVideos.slice(4, 8);
 
   return (
     <section ref={containerRef} className="relative py-24 overflow-hidden">
@@ -83,7 +83,7 @@ export const VideoProjectsSection = () => {
         <div className="flex flex-col gap-8 md:gap-12">
           {/* Top Row - Aligned Left */}
           <div className="flex justify-start overflow-hidden">
-            <div ref={topRowRef} className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 w-full md:w-[85%]">
+            <div ref={topRowRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full md:w-[90%]">
               {topRowVideos.map((item, index) => (
                 <a key={`top-${index}`} href={item.url} target="_blank" rel="noopener noreferrer" className="block w-full aspect-[9/16] bg-[#a82525]/20 rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl border-2 border-[#a82525]">
                    <VideoThumbnail url={item.url} />
@@ -119,7 +119,7 @@ export const VideoProjectsSection = () => {
 
           {/* Bottom Row - Aligned Right */}
           <div className="flex justify-end overflow-hidden">
-            <div ref={bottomRowRef} className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 w-full md:w-[85%]">
+            <div ref={bottomRowRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full md:w-[90%]">
               {bottomRowVideos.map((item, index) => (
                 <a key={`bottom-${index}`} href={item.url} target="_blank" rel="noopener noreferrer" className="block w-full aspect-[9/16] bg-[#a82525]/20 rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl border-2 border-[#a82525]">
                    <VideoThumbnail url={item.url} />
