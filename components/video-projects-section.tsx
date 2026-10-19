@@ -85,7 +85,7 @@ export const VideoProjectsSection = () => {
           <div className="flex justify-start overflow-hidden">
             <div ref={topRowRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full md:w-[90%]">
               {topRowVideos.map((item, index) => (
-                <a key={`top-${index}`} href={item.url} target="_blank" rel="noopener noreferrer" className="block w-full aspect-[9/16] bg-[#a82525]/20 rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl border-2 border-[#a82525]">
+                <a key={`top-${index}`} href={item.url} target="_blank" rel="noopener noreferrer" className="block w-full aspect-[9/16] bg-[#a82525]/20 rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl ">
                    <VideoThumbnail url={item.url} />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
                    
@@ -121,7 +121,7 @@ export const VideoProjectsSection = () => {
           <div className="flex justify-end overflow-hidden">
             <div ref={bottomRowRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full md:w-[90%]">
               {bottomRowVideos.map((item, index) => (
-                <a key={`bottom-${index}`} href={item.url} target="_blank" rel="noopener noreferrer" className="block w-full aspect-[9/16] bg-[#a82525]/20 rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl border-2 border-[#a82525]">
+                <a key={`bottom-${index}`} href={item.url} target="_blank" rel="noopener noreferrer" className="block w-full aspect-[9/16] bg-[#a82525]/20 rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl">
                    <VideoThumbnail url={item.url} />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
                    
