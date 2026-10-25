@@ -248,7 +248,7 @@ export const HeroSection = () => {
             priority
           />
           {/* Optional subtle gradient at bottom for text readability on mobile */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/0 to-white/0 h-1/2 mt-auto" />
+          <div className="absolute h-1/2 mt-auto" />
         </div>
 
         {/* Center Text Composition */}

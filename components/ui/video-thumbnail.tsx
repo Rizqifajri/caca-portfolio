@@ -1,6 +1,5 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { VideoCardSkeleton } from './video-skeleton';
 
 const thumbnailCache = new Map<string, string>();
 
@@ -47,13 +46,19 @@ export const VideoThumbnail = ({ url }: { url: string }) => {
 
   if (isLoading) {
     return (
-      <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 animate-pulse" />
+      <div className="absolute inset-0 bg-[#FFF0F4] animate-pulse flex flex-col justify-between p-2.5 sm:p-3">
+        <div className="w-full flex-1 rounded-xl bg-[#FAA5B9]" />
+        <div className="w-full pt-2.5 pb-0.5 flex flex-col gap-2">
+          <div className="w-[85%] h-2.5 rounded-full bg-[#FAA5B9]" />
+          <div className="w-[50%] h-2.5 rounded-full bg-[#FAA5B9]" />
+        </div>
+      </div>
     );
   }
 
   if (isError || !thumb) {
     return (
-      <div className="absolute inset-0 bg-neutral-800 flex items-center justify-center" />
+      <div className="absolute inset-0 bg-[#FFF0F4] flex items-center justify-center" />
     );
   }
 
@@ -66,4 +71,3 @@ export const VideoThumbnail = ({ url }: { url: string }) => {
     />
   );
 };
-

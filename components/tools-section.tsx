@@ -38,7 +38,7 @@ export const ToolsSection = () => {
     <section ref={containerRef} className="relative min-h-screen overflow-hidden flex flex-col md:flex-row items-center justify-center pt-20 pb-40 px-6 md:px-16 lg:px-24">
 
       {/* Title (Left Side) */}
-      <div className="w-full md:w-1/2 text-center z-10 mb-20 md:mb-0 flex flex-col items-center justify-center">
+      <div className="w-full md:w-1/2 text-center z-30 mb-20 md:mb-0 flex flex-col items-center justify-center md:-translate-y-14 lg:-translate-y-20">
         <h2 className="text-[#008000] text-5xl md:text-7xl lg:text-9xl font-cursive italic">
           Skills
         </h2>

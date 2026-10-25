@@ -70,8 +70,8 @@ export const GallerySection = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative py-24 overflow-hidden">
-      <div className="w-full px-6 md:px-16 relative">
+    <section ref={containerRef} className="relative pt-24 pb-28 md:pb-36 overflow-hidden bg-[#EFD3E1]/25">
+      <div className="w-full px-6 md:px-16 relative z-10">
 
         {/* Header */}
         <div className="text-center mb-16 md:mb-24">
@@ -138,6 +138,25 @@ export const GallerySection = () => {
           </div>
 
         </div>
+      </div>
+
+      {/* Smooth Organic Wave Divider into Experience Section */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+        <svg
+          className="relative block w-full h-12 sm:h-16 md:h-24"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,60 C320,120 480,20 720,70 C960,120 1200,30 1440,80 L1440,120 L0,120 Z"
+            fill="#EFD3E1"
+            opacity="0.4"
+          />
+          <path
+            d="M0,45 C280,110 520,10 760,65 C1000,115 1240,25 1440,75 L1440,120 L0,120 Z"
+            fill="#FAF9F6"
+          />
+        </svg>
       </div>
     </section>
   );

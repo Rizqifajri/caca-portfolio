@@ -2,20 +2,20 @@ import React from 'react';
 
 export const ContactSection = () => {
   return (
-    <section className="relative w-full min-h-screen bg-white flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-screen bg-white flex flex-col items-center justify-center overflow-x-clip z-30">
       
       {/* Hanging Telephone */}
       <img 
         src="/icons/telephone.svg" 
         alt="Telephone" 
-        className="absolute left-[5%] md:left-[10%] top-0 w-24 md:w-96 h-auto object-contain z-10 drop-shadow-xl" 
+        className="absolute left-[5%] md:left-[10%] top-0 w-24 md:w-80 lg:w-96 h-auto object-contain z-10 drop-shadow-xl" 
       />
 
       {/* Snoopy */}
       <img 
         src="/icons/snoopy.svg" 
         alt="Snoopy" 
-        className="absolute right-[5%] md:right-[15%] bottom-[100px] md:bottom-[120px] w-32 md:w-56 h-auto object-contain z-20" 
+        className="absolute right-[5%] md:right-[15%] bottom-[65px] md:bottom-[75px] lg:bottom-[85px] w-32 md:w-56 h-auto object-contain z-20" 
       />
 
       {/* Main Content */}
@@ -53,7 +53,7 @@ export const ContactSection = () => {
 
       {/* Bottom Border */}
       <div 
-        className="absolute bottom-0 left-0 w-full h-32 md:h-[150px] z-30 pointer-events-none" 
+        className="absolute -bottom-8 md:-bottom-12 lg:-bottom-14 left-0 w-full h-32 md:h-[150px] z-30 pointer-events-none" 
         style={{ 
           backgroundImage: 'url(/icons/kain-green.svg)', 
           backgroundSize: 'auto 100%', 

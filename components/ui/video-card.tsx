@@ -68,7 +68,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({
     };
   }, [url]);
 
-  // While fetching thumbnail, show the dedicated skeleton loading component
+  // While fetching thumbnail, show the dedicated skeleton loading component exactly matching user's image
   if (isLoading) {
     return <VideoCardSkeleton isTopViewer={isTopViewer} className={className} />;
   }
@@ -82,11 +82,11 @@ export const VideoCard: React.FC<VideoCardProps> = ({
       rel="noopener noreferrer"
       className={`block w-full aspect-[9/16] rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${
         isTopViewer
-          ? 'bg-[#a82525]/20 border-2 border-[#a82525]'
-          : 'bg-neutral-900 border border-neutral-700/30'
+          ? 'bg-[#FFF0F4] border-2 border-[#a82525]'
+          : 'bg-[#FFF0F4] border border-[#FFD6E0]'
       } ${className}`}
     >
-      {/* Thumbnail or Stylish Fallback */}
+      {/* Thumbnail or Light Pastel Fallback */}
       {thumb && !isError ? (
         <img
           src={thumb}
@@ -96,13 +96,13 @@ export const VideoCard: React.FC<VideoCardProps> = ({
           loading="lazy"
         />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-[#4A101D] via-[#2A080F] to-black flex items-center justify-center">
-          <Video className="w-16 h-16 text-pink-300/15 group-hover:scale-110 transition-transform duration-500" />
+        <div className="absolute inset-0 bg-[#FFF0F4] flex items-center justify-center">
+          <Video className="w-16 h-16 text-[#FAA5B9]/40 group-hover:scale-110 transition-transform duration-500" />
         </div>
       )}
 
       {/* Dark gradient overlay for text legibility */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
 
       {/* Top Views Badge (if provided or top viewer) */}
       {views && (
@@ -116,7 +116,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({
 
       {/* Center Play Button */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-        <div className="w-11 h-11 md:w-14 md:h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-white/30 group-hover:scale-110 transition-all duration-300 shadow-lg border border-white/20">
+        <div className="w-11 h-11 md:w-14 md:h-14 bg-white/25 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-white/35 group-hover:scale-110 transition-all duration-300 shadow-lg border border-white/30">
           <Play className="w-5 h-5 md:w-6 md:h-6 text-white fill-white ml-0.5" />
         </div>
       </div>
@@ -137,4 +137,3 @@ export const VideoCard: React.FC<VideoCardProps> = ({
     </a>
   );
 };
-
