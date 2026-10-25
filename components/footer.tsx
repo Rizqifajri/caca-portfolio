@@ -60,7 +60,7 @@ export const Footer = () => {
 
         {/* Copyright */}
         <div className="mt-16 pt-8 border-t border-[#008000]/20 text-center flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} Caca's Portfolio. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Calu Portfolio. All rights reserved.</p>
           <p className="flex items-center gap-1">
             Made with <svg className="w-4 h-4 text-[#a82525] fill-[#a82525]" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg> by Creativity
           </p>

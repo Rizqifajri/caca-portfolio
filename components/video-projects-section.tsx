@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { projectsData } from '@/app/libs/data.projects';
 import { VideoCard } from '@/components/ui/video-card';
+import { VideoThumbnail } from './ui/video-thumbnail';
 
 // Removed module-level registerPlugin
 
@@ -85,13 +86,34 @@ export const VideoProjectsSection = () => {
           <div className="flex justify-start overflow-hidden">
             <div ref={topRowRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full md:w-[90%]">
               {topRowVideos.map((item, index) => (
-                <VideoCard
-                  key={`top-${index}`}
-                  url={item.url}
-                  views={item.views}
-                  title="Top Viral Video"
-                  isTopViewer
-                />
+                <a key={`top-${index}`} href={item.url} target="_blank" rel="noopener noreferrer" className="block w-full aspect-[9/16] bg-[#a82525]/20 rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl border-2 border-[#a82525]">
+                   <VideoThumbnail url={item.url} />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+                   
+                   <div className="absolute top-0 left-0 w-full p-4 flex justify-between items-start z-10">
+                      <div className="bg-[#a82525] text-white px-3 py-1 rounded-full text-[10px] md:text-xs font-bold shadow flex items-center gap-1">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        {item.views}
+                      </div>
+                   </div>
+
+                   <div className="absolute inset-0 flex items-center justify-center">
+                     <div className="w-10 h-10 md:w-14 md:h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                       <svg width="24" height="24" viewBox="0 0 24 24" fill="white" className="ml-1">
+                         <path d="M8 5v14l11-7z" />
+                       </svg>
+                     </div>
+                   </div>
+
+                   <div className="absolute bottom-0 left-0 p-4 w-full text-white">
+                     <div className="bg-[#a82525]/80 backdrop-blur-md px-2 py-1 text-[8px] md:text-xs text-white rounded uppercase font-bold tracking-wider inline-block mb-2">
+                       {getTag(item.url)}
+                     </div>
+                     <h4 className="font-semibold text-xs md:text-sm leading-tight line-clamp-2">
+                       Top Viral Video
+                     </h4>
+                   </div>
+                </a>
               ))}
             </div>
           </div>
@@ -100,13 +122,34 @@ export const VideoProjectsSection = () => {
           <div className="flex justify-end overflow-hidden">
             <div ref={bottomRowRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full md:w-[90%]">
               {bottomRowVideos.map((item, index) => (
-                <VideoCard
-                  key={`bottom-${index}`}
-                  url={item.url}
-                  views={item.views}
-                  title="Top Viral Video"
-                  isTopViewer
-                />
+                <a key={`bottom-${index}`} href={item.url} target="_blank" rel="noopener noreferrer" className="block w-full aspect-[9/16] bg-[#a82525]/20 rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl border-2 border-[#a82525]">
+                   <VideoThumbnail url={item.url} />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+                   
+                   <div className="absolute top-0 left-0 w-full p-4 flex justify-between items-start z-10">
+                      <div className="bg-[#a82525] text-white px-3 py-1 rounded-full text-[10px] md:text-xs font-bold shadow flex items-center gap-1">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        {item.views}
+                      </div>
+                   </div>
+
+                   <div className="absolute inset-0 flex items-center justify-center">
+                     <div className="w-10 h-10 md:w-14 md:h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                       <svg width="24" height="24" viewBox="0 0 24 24" fill="white" className="ml-1">
+                         <path d="M8 5v14l11-7z" />
+                       </svg>
+                     </div>
+                   </div>
+
+                   <div className="absolute bottom-0 left-0 p-4 w-full text-white">
+                     <div className="bg-[#a82525]/80 backdrop-blur-md px-2 py-1 text-[8px] md:text-xs text-white rounded uppercase font-bold tracking-wider inline-block mb-2">
+                       {getTag(item.url)}
+                     </div>
+                     <h4 className="font-semibold text-xs md:text-sm leading-tight line-clamp-2">
+                       Top Viral Video
+                     </h4>
+                   </div>
+                </a>
               ))}
             </div>
           </div>
