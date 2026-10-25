@@ -1,19 +1,32 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Image as ImageIcon, Video as VideoIcon } from 'lucide-react';
+import { VideoCardSkeleton } from './video-skeleton';
+
+const thumbnailCache = new Map<string, string>();
 
 export const VideoThumbnail = ({ url }: { url: string }) => {
-  const [thumb, setThumb] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const cached = thumbnailCache.get(url);
+  const [thumb, setThumb] = useState<string | null>(cached || null);
+  const [isLoading, setIsLoading] = useState(!cached);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    if (thumbnailCache.has(url)) {
+      setThumb(thumbnailCache.get(url)!);
+      setIsLoading(false);
+      return;
+    }
+
+    let isMounted = true;
     setIsLoading(true);
     setIsError(false);
+
     fetch(`/api/thumbnail?url=${encodeURIComponent(url)}`)
       .then(res => res.json())
       .then(data => {
+        if (!isMounted) return;
         if (data.thumbnailUrl) {
+          thumbnailCache.set(url, data.thumbnailUrl);
           setThumb(data.thumbnailUrl);
         } else {
           setIsError(true);
@@ -21,19 +34,26 @@ export const VideoThumbnail = ({ url }: { url: string }) => {
       })
       .catch((e) => {
         console.error(e);
-        setIsError(true);
+        if (isMounted) setIsError(true);
       })
       .finally(() => {
-        setIsLoading(false);
+        if (isMounted) setIsLoading(false);
       });
+
+    return () => {
+      isMounted = false;
+    };
   }, [url]);
 
-  if (isLoading || isError || !thumb) {
+  if (isLoading) {
     return (
-      <div className="absolute inset-0 bg-gray-200 animate-pulse flex flex-col items-center justify-center">
-        <ImageIcon className="w-8 h-8 text-gray-400 mb-2 animate-pulse" />
-        <div className="w-1/2 h-2 bg-gray-300 rounded-full"></div>
-      </div>
+      <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 animate-pulse" />
+    );
+  }
+
+  if (isError || !thumb) {
+    return (
+      <div className="absolute inset-0 bg-neutral-800 flex items-center justify-center" />
     );
   }
 
@@ -46,3 +66,4 @@ export const VideoThumbnail = ({ url }: { url: string }) => {
     />
   );
 };
+

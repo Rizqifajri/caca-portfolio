@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { projectsData } from '@/app/libs/data.projects';
-import { VideoThumbnail } from '@/components/ui/video-thumbnail';
+import { VideoCard } from '@/components/ui/video-card';
 
 export default function ProjectsPage() {
   // Extract all categories/brands dynamically
@@ -93,26 +93,11 @@ export default function ProjectsPage() {
               {/* Grid */}
               <div className={`grid grid-cols-2 gap-4 md:gap-8 ${category.slug === 'cretivox' ? 'lg:grid-cols-5' : 'lg:grid-cols-4'}`}>
                 {category.urls.slice(0, category.slug === 'cretivox' ? 10 : 4).map((url, idx) => (
-                  <a key={idx} href={url} target="_blank" rel="noopener noreferrer" className="block w-full aspect-[9/16] bg-gray-300 rounded-2xl overflow-hidden relative group cursor-pointer shadow-lg">
-                    <VideoThumbnail url={url} />
-                    
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 md:w-14 md:h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white" className="ml-1"><path d="M8 5v14l11-7z" /></svg>
-                      </div>
-                    </div>
-
-                    <div className="absolute bottom-0 left-0 p-4 w-full text-white">
-                      <div className="bg-white/20 backdrop-blur-md px-2 py-1 text-[10px] md:text-xs rounded uppercase font-bold tracking-wider inline-block mb-2 text-white/90">
-                        {getTag(url)}
-                      </div>
-                      <h4 className="font-semibold text-sm md:text-base leading-tight line-clamp-2">
-                        {category.title} Video {idx + 1}
-                      </h4>
-                    </div>
-                  </a>
+                  <VideoCard
+                    key={idx}
+                    url={url}
+                    title={`${category.title} Video ${idx + 1}`}
+                  />
                 ))}
               </div>
             </div>
