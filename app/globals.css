@@ -9,7 +9,8 @@
   --color-forest-green: #014421;
   --color-crimson-red: #C80000;
   --color-ivory-mist: #FAF9F6;
-  --font-cursive: var(--font-great-vibes);
+  --font-cursive: var(--font-ivypresto), cursive;
+  --font-display: var(--font-ivypresto);
 }
 
 @keyframes shimmer {
@@ -29,5 +30,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+.font-cursive {
+  font-weight: 400 !important;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 

@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { projectsData } from '@/app/libs/data.projects';
 import { VideoCard } from '@/components/ui/video-card';
+import { FeaturedAutoplayCard } from '@/components/ui/featured-autoplay-card';
 
 export const VideoProjectsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -49,14 +50,16 @@ export const VideoProjectsSection = () => {
     return () => ctx.revert();
   }, []);
 
-  // Combine and sort top videos if needed (just slicing top 8 for now)
+  // Combine and sort top videos if needed
   const viralVideos = [
     ...(projectsData.cretivox?.igTopViewers || []),
     ...(projectsData.cretivox?.tiktokTopViewers || [])
-  ].slice(0, 8);
+  ];
 
-  const topRowVideos = viralVideos.slice(0, 4);
-  const bottomRowVideos = viralVideos.slice(4, 8);
+  // Top 4 right beside the big video (2x2 grid)
+  const asideVideos = viralVideos.slice(0, 4);
+  // Next 4 videos placed below in the bottom row
+  const bottomVideos = viralVideos.slice(4, 8);
 
   return (
     <section ref={containerRef} className="relative py-24 overflow-hidden">
@@ -66,7 +69,7 @@ export const VideoProjectsSection = () => {
 
       <div className="w-full px-6 md:px-16 z-10 relative">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 md:mb-16">
           <h2 className="text-[#a82525] text-5xl md:text-9xl font-cursive italic tracking-wide">
             Projects
           </h2>
@@ -75,36 +78,44 @@ export const VideoProjectsSection = () => {
           </p>
         </div>
 
-        {/* Grid Container */}
-        <div className="flex flex-col gap-8 md:gap-12">
-          {/* Top Row - Aligned Left */}
-          <div className="flex justify-start overflow-hidden">
-            <div ref={topRowRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full md:w-[90%]">
-              {topRowVideos.map((item, index) => (
+        {/* Agency Creative Layout: Big Video on the Left, Others on the Right and Below */}
+        <div className="flex flex-col gap-6 md:gap-8">
+          {/* Main Showcase Row: Big Video (Left) + 2x2 Video Cards (Right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
+            {/* Big Video Card on the Left */}
+            <div className="lg:col-span-5 xl:col-span-5 flex justify-center">
+              <div className="w-full max-w-[380px] sm:max-w-[440px] lg:max-w-none">
+                <FeaturedAutoplayCard videoSrc="/IMG_1338.MP4" />
+              </div>
+            </div>
+
+            {/* Content Beside on the Right: 2x2 Grid */}
+            <div ref={topRowRef} className="lg:col-span-7 xl:col-span-7 grid grid-cols-2 gap-4 md:gap-6">
+              {asideVideos.map((item, index) => (
                 <VideoCard
-                  key={`top-${index}`}
+                  key={`aside-${index}`}
                   url={item.url}
                   views={item.views}
-                  title="Top Viral Video"
+                  title="Viral Project Edit"
                   isTopViewer
+                  embed
                 />
               ))}
             </div>
           </div>
 
-          {/* Bottom Row - Aligned Right */}
-          <div className="flex justify-end overflow-hidden">
-            <div ref={bottomRowRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full md:w-[90%]">
-              {bottomRowVideos.map((item, index) => (
-                <VideoCard
-                  key={`bottom-${index}`}
-                  url={item.url}
-                  views={item.views}
-                  title="Top Viral Video"
-                  isTopViewer
-                />
-              ))}
-            </div>
+          {/* Further Content Below: 4 Column Grid */}
+          <div ref={bottomRowRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 pt-4">
+            {bottomVideos.map((item, index) => (
+              <VideoCard
+                key={`bottom-${index}`}
+                url={item.url}
+                views={item.views}
+                title="Top Viral Video"
+                isTopViewer
+                embed
+              />
+            ))}
           </div>
         </div>
 
