@@ -81,11 +81,11 @@ export const VideoProjectsSection = () => {
         {/* Agency Creative Layout: Big Video on the Left, Others on the Right and Below */}
         <div className="flex flex-col gap-6 md:gap-8">
           {/* Main Showcase Row: Big Video (Left) + 2x2 Video Cards (Right) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 items-stretch">
             {/* Big Video Card on the Left */}
-            <div className="lg:col-span-5 xl:col-span-5 flex justify-center">
-              <div className="w-full max-w-[380px] sm:max-w-[440px] lg:max-w-none">
-                <FeaturedAutoplayCard videoSrc="/IMG_1338.MP4" />
+            <div className="lg:col-span-5 xl:col-span-5 flex justify-center h-full">
+              <div className="w-full max-w-[380px] sm:max-w-[440px] lg:max-w-none h-full">
+                <FeaturedAutoplayCard videoSrc="/IMG_1338.MP4" className="h-full" />
               </div>
             </div>
 
@@ -105,7 +105,7 @@ export const VideoProjectsSection = () => {
           </div>
 
           {/* Further Content Below: 4 Column Grid */}
-          <div ref={bottomRowRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 pt-4">
+          <div ref={bottomRowRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {bottomVideos.map((item, index) => (
               <VideoCard
                 key={`bottom-${index}`}

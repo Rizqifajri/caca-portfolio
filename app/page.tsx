@@ -1,4 +1,3 @@
-import { NavigationBar } from "@/components/navigation-bar";
 import { HeroSection } from "@/components/hero-section";
 import { BrandSection } from "@/components/brand-section";
 import { ToolsSection } from "@/components/tools-section";

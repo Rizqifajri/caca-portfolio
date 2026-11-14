@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -20,121 +21,121 @@ export const HeroSection = () => {
   const assets = [
     {
       id: 1, src: '/icons/yellow-button.svg', rotation: -5, zIndex: 10,
-      desktop: { size: 300, top: 16, left: 22 },
-      macbook: { size: 250, top: 16, left: 17 },
-      tablet: { size: 200, top: 30, left: 15 },
+      desktop: { size: 300, top: 14, left: 15 },
+      macbook: { size: 270, top: 12, left: 7 },
+      tablet: { size: 195, top: 12, left: 1 },
       mobile: { size: 100, top: 24, left: 10 },
     },
     {
       id: 2, src: '/icons/red-star.svg', rotation: 12, zIndex: 11,
-      desktop: { size: 400, top: 5, left: 27 },
-      macbook: { size: 300, top: 5, left: 24 },
-      tablet: { size: 250, top: 24, left: 23 },
+      desktop: { size: 400, top: 4, left: 20 },
+      macbook: { size: 320, top: 1, left: 12 },
+      tablet: { size: 235, top: 2, left: 7 },
       mobile: { size: 120, top: 33, left: 25 },
     },
     {
       id: 3, src: '/icons/ribbon-green.svg', rotation: -8, zIndex: 12,
-      desktop: { size: 300, top: 35, left: 20 },
-      macbook: { size: 220, top: 35, left: 15 },
-      tablet: { size: 160, top: 40, left: 10 },
+      desktop: { size: 300, top: 35, left: 16 },
+      macbook: { size: 250, top: 32, left: 6 },
+      tablet: { size: 195, top: 33, left: 2 },
       mobile: { size: 100, top: 10, left: 10 },
     },
     {
       id: 4, src: '/icons/teratai.svg', rotation: 5, zIndex: 9,
       desktop: { size: 350, top: 53, left: 17 },
-      macbook: { size: 260, top: 53, left: 17 },
-      tablet: { size: 200, top: 48, left: 10 },
+      macbook: { size: 280, top: 48, left: 12 },
+      tablet: { size: 220, top: 49, left: 5 },
       mobile: { size: 120, top: 48, left: 5 },
     },
     {
       id: 5, src: '/icons/love-cookies.svg', rotation: -18, zIndex: 14,
       desktop: { size: 350, top: 49, left: 28 },
-      macbook: { size: 260, top: 49, left: 25 },
-      tablet: { size: 200, top: 55, left: 22 },
+      macbook: { size: 270, top: 52, left: 25 },
+      tablet: { size: 215, top: 53, left: 19 },
       mobile: { size: 120, top: 45, left: 15 },
     },
     {
       id: 6, src: '/icons/tomato.svg', rotation: 12, zIndex: 15,
       desktop: { size: 300, top: 60, left: 37 },
-      macbook: { size: 220, top: 60, left: 35 },
-      tablet: { size: 160, top: 60, left: 35 },
+      macbook: { size: 235, top: 58, left: 35 },
+      tablet: { size: 185, top: 59, left: 32 },
       mobile: { size: 100, top: 55, left: 25 },
     },
     {
       id: 7, src: '/icons/sun-flower.svg', rotation: 15, zIndex: 13,
       desktop: { size: 300, top: 50, left: 55 },
-      macbook: { size: 220, top: 50, left: 60 },
-      tablet: { size: 160, top: 50, left: 62 },
+      macbook: { size: 240, top: 52, left: 57 },
+      tablet: { size: 190, top: 53, left: 59 },
       mobile: { size: 100, top: 55, left: 65 },
     },
     {
       id: 8, src: '/icons/camera-pocket.svg', rotation: -8, zIndex: 20,
-      desktop: { size: 600, top: 20, left: 60 },
-      macbook: { size: 450, top: 20, left: 63 },
-      tablet: { size: 300, top: 28, left: 55 },
+      desktop: { size: 600, top: 22, left: 63 },
+      macbook: { size: 480, top: 30, left: 65 },
+      tablet: { size: 360, top: 32, left: 70 },
       mobile: { size: 180, top: 25, left: 60 },
     },
     {
-      id: 9, src: '/icons/film.svg', rotation: -15, zIndex: 12,
-      desktop: { size: 400, top: 22, left: 60 },
-      macbook: { size: 300, top: 12, left: 65 },
-      tablet: { size: 250, top: 23, left: 55 },
+      id: 9, src: '/icons/film.svg', rotation: -14, zIndex: 12,
+      desktop: { size: 400, top: 20, left: 66 },
+      macbook: { size: 330, top: 16, left: 76 },
+      tablet: { size: 255, top: 17, left: 74 },
       mobile: { size: 120, top: 15, left: 70 },
     },
     {
       id: 10, src: '/icons/red-flower.svg', rotation: 10, zIndex: 11,
-      desktop: { size: 400, top: 6, left: 56 },
-      macbook: { size: 300, top: 6, left: 56 },
-      tablet: { size: 250, top: 20, left: 40 },
+      desktop: { size: 400, top: 6, left: 58 },
+      macbook: { size: 340, top: 1, left: 62 },
+      tablet: { size: 265, top: 7, left: 63 },
       mobile: { size: 120, top: 5, left: 65 },
     },
     {
       id: 11, src: '/icons/red-pin.svg', rotation: 50, zIndex: 25,
-      desktop: { size: 200, top: 30, left: 55 },
-      macbook: { size: 150, top: 25, left: 55 },
-      tablet: { size: 100, top: 30, left: 60 },
+      desktop: { size: 200, top: 30, left: 57 },
+      macbook: { size: 170, top: 22, left: 75 },
+      tablet: { size: 130, top: 23, left: 62 },
       mobile: { size: 60, top: 35, left: 75 },
     },
     {
       id: 12, src: '/icons/c.svg', rotation: -15, zIndex: 16,
       desktop: { size: 70, top: 72, left: 49 },
-      macbook: { size: 55, top: 72, left: 49 },
-      tablet: { size: 45, top: 70, left: 47 },
+      macbook: { size: 58, top: 70, left: 47 },
+      tablet: { size: 48, top: 70, left: 45 },
       mobile: { size: 30, top: 68, left: 40 },
     },
     {
       id: 13, src: '/icons/a.svg', rotation: -5, zIndex: 16,
       desktop: { size: 70, top: 70, left: 52 },
-      macbook: { size: 55, top: 70, left: 52 },
-      tablet: { size: 45, top: 68, left: 51 },
+      macbook: { size: 58, top: 68, left: 50 },
+      tablet: { size: 48, top: 68, left: 49 },
       mobile: { size: 30, top: 65, left: 46 },
     },
     {
       id: 14, src: '/icons/love.svg', rotation: -10, zIndex: 16,
       desktop: { size: 80, top: 61, left: 52 },
-      macbook: { size: 65, top: 63, left: 52 },
-      tablet: { size: 50, top: 60, left: 52 },
+      macbook: { size: 66, top: 60, left: 50 },
+      tablet: { size: 54, top: 60, left: 49 },
       mobile: { size: 35, top: 58, left: 50 },
     },
     {
       id: 15, src: '/icons/l.svg', rotation: -10, zIndex: 16,
       desktop: { size: 70, top: 70, left: 55 },
-      macbook: { size: 55, top: 70, left: 55 },
-      tablet: { size: 45, top: 68, left: 55 },
+      macbook: { size: 58, top: 68, left: 53 },
+      tablet: { size: 48, top: 68, left: 53 },
       mobile: { size: 30, top: 65, left: 53 },
     },
     {
       id: 16, src: '/icons/u.svg', rotation: 15, zIndex: 16,
       desktop: { size: 70, top: 66, left: 58 },
-      macbook: { size: 55, top: 66, left: 58 },
-      tablet: { size: 45, top: 65, left: 59 },
+      macbook: { size: 58, top: 64, left: 56 },
+      tablet: { size: 48, top: 64, left: 56 },
       mobile: { size: 30, top: 63, left: 60 },
     },
     {
       id: 17, src: '/icons/star.svg', rotation: -5, zIndex: 16,
       desktop: { size: 70, top: 71, left: 60 },
-      macbook: { size: 55, top: 71, left: 60 },
-      tablet: { size: 45, top: 69, left: 63 },
+      macbook: { size: 58, top: 70, left: 58 },
+      tablet: { size: 48, top: 70, left: 59 },
       mobile: { size: 30, top: 67, left: 65 },
     },
   ];
@@ -142,27 +143,82 @@ export const HeroSection = () => {
   useEffect(() => {
     gsap.registerPlugin(Draggable, ScrollTrigger);
     if (!containerRef.current) return;
-    
+
     let draggables: globalThis.Draggable[] = [];
 
     const ctx = gsap.context(() => {
       const elements = containerRef.current!.querySelectorAll('.scrapbook-item');
+      const nameChars = containerRef.current!.querySelectorAll('.hero-name-char');
+      const roleChars = containerRef.current!.querySelectorAll('.hero-role-char');
 
       // Set initial rotations
       elements.forEach((el, index) => {
         gsap.set(el, { rotation: assets[index]?.rotation });
       });
 
-      // Fall and scatter animation on load
-      gsap.fromTo(elements,
+      // Unique Hero Center Text Reveal Timeline
+      // Morphing 3D editorial flip & elastic letter settle
+      const heroTl = gsap.timeline({ delay: 0.1 });
+
+      heroTl
+        // Name: 3D perspective flip with gentle stagger & glow bloom
+        .fromTo(
+          nameChars,
+          {
+            yPercent: 120,
+            opacity: 0,
+            rotateX: -75,
+            rotateY: 20,
+            scale: 0.8,
+            filter: 'blur(8px)',
+          },
+          {
+            yPercent: 0,
+            opacity: 1,
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1,
+            filter: 'blur(0px)',
+            duration: 1.3,
+            stagger: {
+              each: 0.045,
+              from: 'center', // Radiates from the center of the name outward
+            },
+            ease: 'elastic.out(1, 0.65)',
+          }
+        )
+        // Subtitle role: Clean tracking stretch and slide-in
+        .fromTo(
+          roleChars,
+          {
+            opacity: 0,
+            y: 20,
+            letterSpacing: '0.35em',
+            filter: 'blur(4px)',
+          },
+          {
+            opacity: 1,
+            y: 0,
+            letterSpacing: '0.08em',
+            filter: 'blur(0px)',
+            duration: 1.1,
+            stagger: 0.02,
+            ease: 'power3.out',
+          },
+          '-=0.7'
+        );
+
+      // Fall and scatter animation for scrapbook assets
+      gsap.fromTo(
+        elements,
         { y: -300, opacity: 0, scale: 0.8 },
         {
           y: 0,
           opacity: 1,
           scale: 1,
-          duration: 1.5,
-          stagger: 0.1,
-          ease: "bounce.out"
+          duration: 1.4,
+          stagger: 0.08,
+          ease: 'bounce.out',
         }
       );
 
@@ -223,7 +279,7 @@ export const HeroSection = () => {
         );
       }
     }, containerRef);
-    
+
     return () => {
       if (draggables && draggables.length > 0) {
         draggables.forEach(d => d.kill());
@@ -236,8 +292,81 @@ export const HeroSection = () => {
     <>
       <section
         ref={containerRef}
-        className="flex flex-col h-[calc(100dvh-90px)] min-h-[500px] bg-ivory-mist text-forest-green relative overflow-hidden font-sans items-center justify-end md:justify-center"
+        className="flex flex-col h-[100dvh] min-h-[600px] md:min-h-[700px] bg-ivory-mist text-forest-green relative overflow-hidden font-sans items-center justify-end md:justify-center"
       >
+        {/* Aesthetic Scrapbook Background Texture & Ambient Glows */}
+        <div className="hidden md:block absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          {/* Soft Warm Ambient Glows */}
+          <div className="absolute -top-[10%] -left-[5%] w-[480px] h-[480px] rounded-full bg-[#EFD3E1]/50 blur-[110px]" />
+          <div className="absolute top-[15%] -right-[5%] w-[450px] h-[450px] rounded-full bg-[#fce5b6]/45 blur-[110px]" />
+          <div className="absolute -bottom-[15%] left-[25%] w-[520px] h-[420px] rounded-full bg-[#014421]/[0.05] blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] rounded-full bg-[#a82525]/[0.04] blur-[100px]" />
+
+          {/* Subtle Editorial Grid Pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.45]"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(1, 68, 33, 0.055) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(1, 68, 33, 0.055) 1px, transparent 1px)
+              `,
+              backgroundSize: '44px 44px',
+              maskImage: 'radial-gradient(ellipse 85% 80% at 50% 50%, black 35%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 85% 80% at 50% 50%, black 35%, transparent 100%)',
+            }}
+          />
+
+          {/* Fine Dot Matrix Overlay */}
+          <div
+            className="absolute inset-0 opacity-[0.35]"
+            style={{
+              backgroundImage: 'radial-gradient(rgba(168, 37, 37, 0.14) 1px, transparent 1px)',
+              backgroundSize: '22px 22px',
+            }}
+          />
+        </div>
+
+        {/* In-Page Top Editorial Header (Scrolls with the page, not fixed) */}
+        <header className="absolute top-0 left-0 w-full flex items-start justify-between px-5 md:px-8 lg:px-10 pt-5 md:pt-7 lg:pt-8 z-35 pointer-events-none">
+          {/* Left: Editorial Split Identity */}
+          <Link
+            href="/"
+            className="pointer-events-auto group flex items-center gap-3.5 md:gap-4 text-sm md:text-base lg:text-lg leading-[1.15] tracking-tight select-none"
+          >
+            <div className="text-right font-semibold text-[#014421] group-hover:text-[#a82525] transition-colors">
+              <span className="block">Cantika</span>
+              <span className="block">Fitriani</span>
+            </div>
+            <div className="h-9 md:h-11 w-[1.5px] bg-[#014421]/30 group-hover:bg-[#a82525]/50 transition-colors" />
+            <div className="text-left font-medium text-[#014421]/80">
+              <span className="block">Portfolio</span>
+              <span className="block text-[#a82525] font-semibold">2026</span>
+            </div>
+          </Link>
+
+          {/* Right: Bold Stacked "Get In Touch" Lockup with Dot Matrix Accent */}
+          <div className="relative pointer-events-auto">
+            <div
+              className="absolute -right-2 -top-2 w-28 md:w-36 h-16 md:h-20 opacity-35 pointer-events-none"
+              style={{
+                backgroundImage: 'radial-gradient(#014421 1px, transparent 1px)',
+                backgroundSize: '4px 4px',
+              }}
+            />
+            <Link
+              href="/contact"
+              className="relative group block text-right leading-[0.9] tracking-tighter text-[#014421] hover:text-[#a82525] transition-colors"
+            >
+              <span className="block text-2xl md:text-3xl lg:text-4xl font-semibold">
+                Get In
+              </span>
+              <span className="block text-2xl md:text-3xl lg:text-4xl font-bold text-[#a82525] group-hover:text-[#014421] transition-colors">
+                Touch
+              </span>
+            </Link>
+          </div>
+        </header>
+
         {/* Mobile Background Image */}
         <div className="block md:hidden absolute inset-0 z-10">
           <Image
@@ -252,15 +381,38 @@ export const HeroSection = () => {
         </div>
 
         {/* Center Text Composition */}
-        <div className="relative z-20 flex flex-col items-center justify-center text-center pointer-events-none w-full px-4 pb-8 md:pb-0" translate="no">
-          <p className="text-xl md:text-2xl lg:text-3xl font-medium text-forest-green mb-0 md:mb-2 tracking-wide">
-            Hello, im
-          </p>
-          <h1 className="font-cursive text-5xl md:text-7xl lg:text-8xl text-crimson-red tracking-normal normal-case mb-2 md:mb-4">
-            Cantika Fitriani
+        <div className="relative z-20 flex flex-col items-center justify-center text-center pointer-events-none w-full px-4 pb-8 md:pb-0 md:-mt-6 lg:-mt-8" translate="no">
+          <h1
+            aria-label="Cantika Fitriani"
+            className="font-cursive text-6xl md:text-8xl lg:text-[7.5rem] text-crimson-red tracking-normal normal-case mb-3 md:mb-5 flex flex-wrap justify-center gap-x-[0.25em] perspective-[1000px]"
+          >
+            {['Cantika', 'Fitriani'].map((word, wIdx) => (
+              <span
+                key={wIdx}
+                className="inline-flex overflow-visible py-3 px-1 -my-3 -mx-1"
+              >
+                {word.split('').map((char, cIdx) => (
+                  <span
+                    key={cIdx}
+                    className="hero-name-char inline-block will-change-transform transform-gpu"
+                  >
+                    {char}
+                  </span>
+                ))}
+              </span>
+            ))}
           </h1>
-          <p className="text-lg md:text-xl lg:text-2xl font-medium text-forest-green tracking-wide">
-            Creative Video Editor
+
+          <p className="text-base md:text-lg lg:text-xl font-medium uppercase tracking-[0.08em] text-forest-green flex flex-wrap justify-center overflow-hidden py-1">
+            {'Creative Video Editor'.split('').map((char, idx) => (
+              <span
+                key={idx}
+                className="hero-role-char inline-block will-change-transform transform-gpu"
+                style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+              >
+                {char}
+              </span>
+            ))}
           </p>
         </div>
 
@@ -289,7 +441,7 @@ export const HeroSection = () => {
                 left: ${asset.macbook.left}%;
               }
             }
-            @media (min-width: 1440px) {
+            @media (min-width: 1600px) {
               .asset-${asset.id} {
                 width: ${asset.desktop.size}px;
                 height: ${asset.desktop.size}px;
@@ -326,7 +478,13 @@ export const HeroSection = () => {
 
       {/* About Me Section */}
       <section id="about" className="text-[#333333] px-6 md:px-16 py-12 md:py-24 relative z-40 overflow-hidden bg-transparent">
-        <div className="w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-stretch md:bg-[#EFD3E1] bg-transparent">
+        <div className="relative w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-stretch md:bg-[#EFD3E1] bg-transparent">
+          {/* Viewfinder Capture Corner Marks */}
+          <span className="hidden md:block absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-[#a82525]/50 pointer-events-none z-10" />
+          <span className="hidden md:block absolute -top-2 -right-2 w-4 h-4 border-t-2 border-r-2 border-[#a82525]/50 pointer-events-none z-10" />
+          <span className="hidden md:block absolute -bottom-2 -left-2 w-4 h-4 border-b-2 border-l-2 border-[#a82525]/50 pointer-events-none z-10" />
+          <span className="hidden md:block absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-[#a82525]/50 pointer-events-none z-10" />
+
           {/* Text Container (Left) */}
           <div className="w-full md:w-1/2 flex flex-col items-start justify-center text-left px-4 md:px-12 lg:px-16 py-8 md:py-16">
             <h2 ref={aboutHeadingRef} className="text-4xl md:text-5xl lg:text-6xl text-[#a82525] font-sans mb-6">

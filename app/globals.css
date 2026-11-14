@@ -9,6 +9,7 @@
   --color-forest-green: #014421;
   --color-crimson-red: #C80000;
   --color-ivory-mist: #FAF9F6;
+  --font-sans: var(--font-poppins), sans-serif;
   --font-cursive: var(--font-ivypresto), cursive;
   --font-display: var(--font-ivypresto);
 }

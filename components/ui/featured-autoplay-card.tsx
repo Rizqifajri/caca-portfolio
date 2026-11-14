@@ -63,7 +63,7 @@ export const FeaturedAutoplayCard: React.FC<FeaturedAutoplayCardProps> = ({
   };
 
   return (
-    <div className={`relative w-full aspect-[9/16] rounded-2xl md:rounded-3xl overflow-hidden bg-black shadow-2xl ring-1 ring-black/10 group ${className}`}>
+    <div className={`relative w-full aspect-[9/16] rounded-none overflow-hidden bg-black shadow-md group ${className}`}>
       <video
         ref={videoRef}
         src={videoSrc}

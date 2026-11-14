@@ -18,21 +18,21 @@ export const VideoCardSkeleton: React.FC<VideoCardSkeletonProps> = ({
 }) => {
   return (
     <div
-      className={`relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-[#FFF0F4] border border-[#FFD6E0] p-2.5 sm:p-3 flex flex-col justify-between shadow-xs ${className}`}
+      className={`relative w-full aspect-[9/16] rounded-none overflow-hidden bg-[#FAF9F6] border border-gray-100 p-2.5 sm:p-3 flex flex-col justify-between shadow-none ${className}`}
       aria-label="Loading video..."
     >
       {/* Light Shimmer Sweep */}
       <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none z-20" />
 
-      {/* Main Thumbnail Block (Sweet Pastel Pink) */}
-      <div className="w-full flex-1 rounded-xl bg-[#FAA5B9] relative overflow-hidden" />
+      {/* Main Thumbnail Block */}
+      <div className="w-full flex-1 rounded-none bg-gray-200 relative overflow-hidden" />
 
-      {/* Bottom Placeholder Bars (Sweet Pastel Pink) */}
+      {/* Bottom Placeholder Bars */}
       <div className="w-full pt-2.5 sm:pt-3 pb-0.5 flex flex-col gap-2">
         {/* Line 1 */}
-        <div className="w-[85%] h-2.5 sm:h-3 rounded-full bg-[#FAA5B9]" />
+        <div className="w-[85%] h-2.5 sm:h-3 rounded-none bg-gray-200" />
         {/* Line 2 */}
-        <div className="w-[50%] h-2.5 sm:h-3 rounded-full bg-[#FAA5B9]" />
+        <div className="w-[50%] h-2.5 sm:h-3 rounded-none bg-gray-200" />
       </div>
     </div>
   );
