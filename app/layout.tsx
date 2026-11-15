@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Poppins, Great_Vibes } from "next/font/google";
+import { Poppins } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { NavigationBar } from "@/components/navigation-bar";
 import { Footer } from "@/components/footer";
@@ -10,10 +11,12 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
 });
 
-const greatVibes = Great_Vibes({
-  variable: "--font-great-vibes",
-  subsets: ["latin"],
-  weight: ["400"],
+const ivyPresto = localFont({
+  src: "../public/font/IvyPresto Display SemiBold Italic.ttf",
+  variable: "--font-ivypresto",
+  weight: "400",
+  style: "italic",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${poppins.variable} ${greatVibes.variable} h-full antialiased`}
+      className={`${poppins.variable} ${ivyPresto.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <NavigationBar />

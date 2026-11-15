@@ -6,10 +6,10 @@ export default function GalleryPage() {
   const placeholders = Array.from({ length: 24 }, (_, i) => i + 1);
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] py-12 md:py-24 px-4 md:px-8 relative overflow-hidden text-gray-900 font-sans">
+    <div className="min-h-screen bg-[#FAF9F6] pt-8 md:pt-14 pb-16 md:pb-24 px-4 md:px-8 relative overflow-hidden text-gray-900 font-sans">
       <div className="max-w-[1600px] mx-auto z-10 relative">
         {/* Navigation */}
-        <Link href="/" className="inline-flex items-center text-[#008000] hover:text-[#005a00] transition-colors mb-16 md:mb-32 group font-medium text-sm">
+        <Link href="/" className="inline-flex items-center text-[#008000] hover:text-[#005a00] transition-colors mb-8 md:mb-14 group font-medium text-sm">
           <svg className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
@@ -17,7 +17,7 @@ export default function GalleryPage() {
         </Link>
 
         {/* Top Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 md:mb-40 gap-12">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8 md:gap-12">
           <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-medium font-cursive italic tracking-tight text-[#a82525] leading-none">
             Gallery<span className="text-2xl md:text-4xl align-top">º</span>
           </h1>
