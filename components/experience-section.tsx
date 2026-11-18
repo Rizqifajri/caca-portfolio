@@ -5,24 +5,32 @@ export const ExperienceSection = () => {
     {
       id: 1,
       role: 'Video Editor',
-      company: 'Seva',
-      period: '2021 - Present',
-      description: 'Spearheaded video editing and post-production for various promotional campaigns, ensuring high-quality visual storytelling and brand consistency.',
+      company: 'Lanu Indonesia',
+      period: '2026 - Present',
+      description: 'Produced and edited engaging educational, motivational, and promotional short-form videos for Instagram Reels and TikTok, focusing on dynamic pacing and visual storytelling.',
       align: 'right' // Company/Role on the right
     },
     {
       id: 2,
       role: 'Video Editor',
-      company: 'Cretivox',
-      period: '2017 - 2020',
-      description: 'Handled end-to-end video production, focusing on engaging content creation, motion graphics, and dynamic pacing for digital platforms.',
+      company: 'Seva',
+      period: '2024 - 2026',
+      description: 'Spearheaded video editing and post-production for various promotional campaigns, ensuring high-quality visual storytelling and brand consistency.',
       align: 'left' // Company/Role on the left
+    },
+    {
+      id: 3,
+      role: 'Video Editor Intern',
+      company: 'Cretivox',
+      period: '2025',
+      description: 'Handled end-to-end video production, focusing on engaging content creation, motion graphics, and dynamic pacing for digital platforms.',
+      align: 'right' // Company/Role on the right
     }
   ];
 
   return (
     <section id="experience" className="py-24 px-6 md:px-16 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+      <div className="w-full">
 
         {/* Header */}
         <div className="mb-12">
