@@ -14,7 +14,15 @@ export default async function ProjectDetail({ params }: { params: Promise<{ cate
   let topViewers: { url: string; views: string }[] = [];
 
   // Dynamic matching based on slug
-  if (category === 'cretivox') {
+  if (category === 'lanu' || category === 'lanu-indonesia') {
+    title = 'Lanu Indonesia';
+    urls = [
+      ...(projectsData.lanu.instagram || []),
+      ...(projectsData.lanu.tiktok || []),
+      ...(projectsData.lanu.edukasi || []),
+      ...(projectsData.lanu.motivation || []),
+    ];
+  } else if (category === 'cretivox') {
     title = 'Cretivox';
     urls = [
       ...(projectsData.cretivox.igAssets || []),
