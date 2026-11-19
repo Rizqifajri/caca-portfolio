@@ -37,19 +37,33 @@ export const FeaturedAutoplayCard: React.FC<FeaturedAutoplayCardProps> = ({
     const video = videoRef.current;
     if (!video) return;
 
-    if (video.readyState >= 2) {
+    if (video.readyState >= 1) {
       setIsReady(true);
     }
     attemptPlay();
 
+    const handleReady = () => {
+      setIsReady(true);
+      attemptPlay();
+    };
+
     const updateProgress = () => {
+      setIsReady(true);
       if (video.duration) {
         setProgress((video.currentTime / video.duration) * 100);
       }
     };
 
+    video.addEventListener('loadedmetadata', handleReady);
+    video.addEventListener('loadeddata', handleReady);
+    video.addEventListener('canplay', handleReady);
+    video.addEventListener('playing', handleReady);
     video.addEventListener('timeupdate', updateProgress);
     return () => {
+      video.removeEventListener('loadedmetadata', handleReady);
+      video.removeEventListener('loadeddata', handleReady);
+      video.removeEventListener('canplay', handleReady);
+      video.removeEventListener('playing', handleReady);
       video.removeEventListener('timeupdate', updateProgress);
     };
   }, []);
@@ -75,16 +89,16 @@ export const FeaturedAutoplayCard: React.FC<FeaturedAutoplayCardProps> = ({
 
   return (
     <div className={`relative w-full aspect-[9/16] rounded-none overflow-hidden bg-[#FFF0F4] shadow-md group ${className}`}>
-      {/* Loading / Buffering Skeleton */}
+      {/* Loading / Buffering Skeleton behind video */}
       {!isReady && !hasError && (
-        <div className="absolute inset-0 z-10 bg-[#FFF0F4] flex flex-col items-center justify-center p-6 animate-pulse">
+        <div className="absolute inset-0 z-0 bg-[#FFF0F4] flex flex-col items-center justify-center p-6 animate-pulse pointer-events-none">
           <div className="w-full h-full rounded-xl bg-[#FAA5B9]/60" />
         </div>
       )}
 
       {/* Error Fallback */}
       {hasError && (
-        <div className="absolute inset-0 z-10 bg-[#FFF0F4] flex flex-col items-center justify-center p-6 text-center">
+        <div className="absolute inset-0 z-20 bg-[#FFF0F4] flex flex-col items-center justify-center p-6 text-center">
           <p className="text-[#a82525] font-semibold text-sm">Video gagal dimuat</p>
           <p className="text-xs text-gray-500 mt-1">Format video belum kompatibel dengan browser.</p>
         </div>
@@ -98,6 +112,10 @@ export const FeaturedAutoplayCard: React.FC<FeaturedAutoplayCardProps> = ({
         autoPlay
         playsInline
         preload="auto"
+        onLoadedMetadata={() => {
+          setIsReady(true);
+          attemptPlay();
+        }}
         onLoadedData={() => {
           setIsReady(true);
           attemptPlay();
@@ -106,10 +124,9 @@ export const FeaturedAutoplayCard: React.FC<FeaturedAutoplayCardProps> = ({
           setIsReady(true);
           attemptPlay();
         }}
+        onPlaying={() => setIsReady(true)}
         onError={() => setHasError(true)}
-        className={`w-full h-full object-cover cursor-pointer transition-opacity duration-300 ${
-          isReady ? 'opacity-100' : 'opacity-0'
-        }`}
+        className="relative z-10 w-full h-full object-cover cursor-pointer"
         onClick={togglePlay}
       />
 
