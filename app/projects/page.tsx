@@ -75,8 +75,8 @@ export default function ProjectsPage() {
   const getTag = (url: string) => url.includes('instagram.com') ? 'INSTAGRAM' : (url.includes('tiktok.com') ? 'TIKTOK' : 'VIDEO');
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] py-12 md:py-24 px-4 md:px-8 relative overflow-hidden text-gray-900 font-sans">
-      <div className="max-w-[1600px] mx-auto z-10 relative">
+    <div className="min-h-screen bg-[#FAF9F6] py-12 md:py-24 px-6 md:px-16 relative overflow-hidden text-gray-900 font-sans">
+      <div className="w-full z-10 relative">
         {/* Navigation */}
         <Link href="/" className="inline-flex items-center text-[#008000] hover:text-[#005a00] transition-colors mb-16 md:mb-32 group font-medium text-sm">
           <svg className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

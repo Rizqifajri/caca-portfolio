@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { TextReveal } from '@/components/ui/text-reveal';
 
 const logosRow1 = [
   { src: '/logo/aqua-logo.png',      alt: 'Aqua'      },
@@ -34,7 +35,7 @@ export const BrandSection = () => {
       {/* Heading */}
       <div className="flex gap-2.5 sm:gap-4 items-center justify-center text-center mb-8 sm:mb-10 md:mb-16 px-4">
         <p className="text-[#C80000] font-cursive italic text-4xl sm:text-6xl md:text-9xl leading-tight">
-          Brand
+          <TextReveal mode="chars" stagger={0.04}>Brand</TextReveal>
         </p>
         <p className="text-[#014421] font-sans text-xs sm:text-sm md:text-base font-semibold mb-2 sm:mb-4 flex items-end">
           I've Work with

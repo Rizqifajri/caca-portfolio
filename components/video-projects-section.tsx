@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { projectsData } from '@/app/libs/data.projects';
 import { VideoCard } from '@/components/ui/video-card';
 import { FeaturedAutoplayCard } from '@/components/ui/featured-autoplay-card';
+import { TextReveal } from '@/components/ui/text-reveal';
 
 export const VideoProjectsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -71,7 +72,7 @@ export const VideoProjectsSection = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 md:mb-16">
           <h2 className="text-[#a82525] text-5xl md:text-9xl font-cursive italic tracking-wide">
-            Projects
+            <TextReveal mode="chars" stagger={0.035}>Projects</TextReveal>
           </h2>
           <p className="text-gray-700 max-w-sm text-right text-sm md:text-base mt-4 md:mt-0 font-sans">
             I'm a passionate video editor specializing in creating captivating visual stories.
