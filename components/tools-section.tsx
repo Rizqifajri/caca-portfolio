@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextReveal } from '@/components/ui/text-reveal';
 
 // Removed module-level registerPlugin
 
@@ -40,11 +41,11 @@ export const ToolsSection = () => {
       {/* Title (Left Side) */}
       <div className="w-full md:w-1/2 text-center z-30 mb-20 md:mb-0 flex flex-col items-center justify-center md:-translate-y-14 lg:-translate-y-20">
         <h2 className="text-[#008000] text-5xl md:text-7xl lg:text-9xl font-cursive italic">
-          Skills
+          <TextReveal mode="chars" stagger={0.035}>Skills</TextReveal>
         </h2>
         <span className="text-red-600 text-xl md:text-2xl lg:text-3xl font-sans -my-1 md:-my-2 z-10">and</span>
         <h2 className="text-[#008000] text-5xl md:text-7xl lg:text-9xl font-cursive italic">
-          Software
+          <TextReveal mode="chars" stagger={0.035} delay={0.15}>Software</TextReveal>
         </h2>
       </div>
 

@@ -58,8 +58,8 @@ export default async function ProjectDetail({ params }: { params: Promise<{ cate
   const totalVideos = urls.length + topViewers.length;
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] py-12 md:py-24 px-4 md:px-8 relative overflow-hidden text-gray-900 font-sans">
-      <div className="max-w-[1600px] mx-auto z-10 relative">
+    <div className="min-h-screen bg-[#FAF9F6] py-12 md:py-24 px-6 md:px-16 relative overflow-hidden text-gray-900 font-sans">
+      <div className="w-full z-10 relative">
         {/* Navigation */}
         <Link href="/projects" className="inline-flex items-center text-[#008000] hover:text-[#005a00] transition-colors mb-16 md:mb-32 group font-medium text-sm">
           <svg className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,17 +87,11 @@ export default async function ProjectDetail({ params }: { params: Promise<{ cate
           </div>
         </div>
 
-        {/* Middle Section (Title & Filters) */}
+        {/* Middle Section (Title) */}
         <div className="flex flex-col md:flex-row justify-between items-baseline mb-12">
           <h2 className="text-2xl md:text-3xl font-medium text-[#222]">
             Selected Works<span className="text-xs font-normal text-gray-500 align-super ml-1">({totalVideos})</span>
           </h2>
-          <div className="flex gap-8 mt-6 md:mt-0 text-xl md:text-2xl font-medium text-gray-300">
-            <span className="text-black cursor-pointer transition-colors">Grid</span>
-            <span className="cursor-pointer hover:text-gray-700 transition-colors">List</span>
-            <span className="cursor-pointer hover:text-gray-700 transition-colors">Feed</span>
-            <span className="cursor-pointer hover:text-gray-700 transition-colors">Full</span>
-          </div>
         </div>
 
         {/* Top Viewers Section */}

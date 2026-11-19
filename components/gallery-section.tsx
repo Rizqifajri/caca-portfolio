@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextReveal } from '@/components/ui/text-reveal';
 
 // Removed module-level registerPlugin
 
@@ -76,7 +77,7 @@ export const GallerySection = () => {
         {/* Header */}
         <div className="text-center mb-16 md:mb-24">
           <h2 className="text-[#a82525] text-5xl md:text-7xl font-cursive italic tracking-wide">
-            Calu Gallery
+            <TextReveal mode="chars" stagger={0.035}>Calu Gallery</TextReveal>
           </h2>
         </div>
 

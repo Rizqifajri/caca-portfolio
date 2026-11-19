@@ -15,12 +15,13 @@ export const FeaturedAutoplayCard: React.FC<FeaturedAutoplayCardProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [isReady, setIsReady] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
 
-  useEffect(() => {
+  const attemptPlay = () => {
     const video = videoRef.current;
     if (!video) return;
-
     video.muted = true;
     const playPromise = video.play();
     if (playPromise !== undefined) {
@@ -30,6 +31,16 @@ export const FeaturedAutoplayCard: React.FC<FeaturedAutoplayCardProps> = ({
           setIsPlaying(false);
         });
     }
+  };
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.readyState >= 2) {
+      setIsReady(true);
+    }
+    attemptPlay();
 
     const updateProgress = () => {
       if (video.duration) {
@@ -63,7 +74,22 @@ export const FeaturedAutoplayCard: React.FC<FeaturedAutoplayCardProps> = ({
   };
 
   return (
-    <div className={`relative w-full aspect-[9/16] rounded-none overflow-hidden bg-black shadow-md group ${className}`}>
+    <div className={`relative w-full aspect-[9/16] rounded-none overflow-hidden bg-[#FFF0F4] shadow-md group ${className}`}>
+      {/* Loading / Buffering Skeleton */}
+      {!isReady && !hasError && (
+        <div className="absolute inset-0 z-10 bg-[#FFF0F4] flex flex-col items-center justify-center p-6 animate-pulse">
+          <div className="w-full h-full rounded-xl bg-[#FAA5B9]/60" />
+        </div>
+      )}
+
+      {/* Error Fallback */}
+      {hasError && (
+        <div className="absolute inset-0 z-10 bg-[#FFF0F4] flex flex-col items-center justify-center p-6 text-center">
+          <p className="text-[#a82525] font-semibold text-sm">Video gagal dimuat</p>
+          <p className="text-xs text-gray-500 mt-1">Format video belum kompatibel dengan browser.</p>
+        </div>
+      )}
+
       <video
         ref={videoRef}
         src={videoSrc}
@@ -71,8 +97,19 @@ export const FeaturedAutoplayCard: React.FC<FeaturedAutoplayCardProps> = ({
         muted
         autoPlay
         playsInline
-        preload="metadata"
-        className="w-full h-full object-cover cursor-pointer"
+        preload="auto"
+        onLoadedData={() => {
+          setIsReady(true);
+          attemptPlay();
+        }}
+        onCanPlay={() => {
+          setIsReady(true);
+          attemptPlay();
+        }}
+        onError={() => setHasError(true)}
+        className={`w-full h-full object-cover cursor-pointer transition-opacity duration-300 ${
+          isReady ? 'opacity-100' : 'opacity-0'
+        }`}
         onClick={togglePlay}
       />
 
