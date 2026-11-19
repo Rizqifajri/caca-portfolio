@@ -9,7 +9,7 @@ interface FeaturedAutoplayCardProps {
 }
 
 export const FeaturedAutoplayCard: React.FC<FeaturedAutoplayCardProps> = ({
-  videoSrc = '/IMG_1338.MP4',
+  videoSrc = '/1119.mp4',
   className = '',
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);

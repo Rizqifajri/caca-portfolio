@@ -86,7 +86,7 @@ export const VideoProjectsSection = () => {
             {/* Big Video Card on the Left */}
             <div className="lg:col-span-5 xl:col-span-5 flex justify-center h-full">
               <div className="w-full max-w-[380px] sm:max-w-[440px] lg:max-w-none h-full">
-                <FeaturedAutoplayCard videoSrc="/IMG_1338.MP4" className="h-full" />
+                <FeaturedAutoplayCard videoSrc="/1119.mp4" className="h-full" />
               </div>
             </div>
 
