@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { VideoCardSkeleton } from './video-skeleton';
-import { Play, Eye, Video, X, ExternalLink, Loader2, RotateCcw } from 'lucide-react';
+import { Play, Eye, Video, X, ExternalLink, Loader2 } from 'lucide-react';
 
 export interface VideoCardProps {
   url: string;
@@ -18,12 +18,6 @@ export const getTag = (url: string) => {
   if (url.includes('instagram.com')) return 'INSTAGRAM';
   if (url.includes('tiktok.com')) return 'TIKTOK';
   return 'VIDEO';
-};
-
-export const getTikTokId = (rawUrl: string): string | null => {
-  if (!rawUrl || !rawUrl.includes('tiktok.com')) return null;
-  const match = rawUrl.match(/\/video\/(\d+)/);
-  return match ? match[1] : null;
 };
 
 export const getDirectEmbedUrl = (rawUrl: string): string | null => {
@@ -53,18 +47,10 @@ export const VideoCard: React.FC<VideoCardProps> = ({
   views,
   isTopViewer = false,
   className = '',
-  embed = false,
 }) => {
-  const isTikTok = url.includes('tiktok.com');
-  const tiktokId = getTikTokId(url);
-  const canEmbedTikTok = embed && isTikTok && Boolean(tiktokId);
-
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [key, setKey] = useState<number>(0);
-
   const cachedThumb = thumbnailCache.get(url);
   const [thumb, setThumb] = useState<string | null>(cachedThumb || null);
-  const [isLoading, setIsLoading] = useState<boolean>(!cachedThumb && !canEmbedTikTok);
+  const [isLoading, setIsLoading] = useState<boolean>(!cachedThumb);
   const [isError, setIsError] = useState<boolean>(false);
 
   // Modal player states
@@ -75,10 +61,8 @@ export const VideoCard: React.FC<VideoCardProps> = ({
   const [isResolvingEmbed, setIsResolvingEmbed] = useState<boolean>(false);
   const [iframeLoaded, setIframeLoaded] = useState<boolean>(false);
 
-  // Fetch thumbnail for non-inline-embedded cards
+  // Fetch thumbnail for all video cards (IG & TikTok)
   useEffect(() => {
-    if (canEmbedTikTok) return;
-
     if (thumbnailCache.has(url)) {
       setThumb(thumbnailCache.get(url)!);
       setIsLoading(false);
@@ -111,7 +95,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({
     return () => {
       isMounted = false;
     };
-  }, [url, canEmbedTikTok]);
+  }, [url]);
 
   // Close modal on Escape key & lock body scroll when open
   useEffect(() => {
@@ -161,68 +145,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({
 
   const tag = getTag(url);
 
-  // CASE 1: TikTok Autoplay & Auto-Retry Loop Embed
-  if (canEmbedTikTok && tiktokId) {
-    const embedSrc = `https://www.tiktok.com/embed/v2/${tiktokId}?lang=en&autoplay=1&loop=1`;
-
-    const handleRetry = () => {
-      setIframeLoaded(false);
-      setKey((prev) => prev + 1);
-    };
-
-    return (
-      <div
-        className={`relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-xl bg-black border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group ${isTopViewer ? 'border-2 border-[#a82525]' : 'border-neutral-800'
-          } ${className}`}
-      >
-        {/* Loading skeleton until iframe loads */}
-        {!iframeLoaded && (
-          <div className="absolute inset-0 z-10 pointer-events-none">
-            <VideoCardSkeleton isTopViewer={isTopViewer} />
-          </div>
-        )}
-
-        {/* TikTok Official Autoplay Embed iFrame */}
-        <iframe
-          key={key}
-          ref={iframeRef}
-          src={embedSrc}
-          title={title}
-          allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-          allowFullScreen
-          loading="lazy"
-          onLoad={() => setIframeLoaded(true)}
-          className={`w-full h-full border-0 absolute inset-0 object-cover transition-opacity duration-500 ${iframeLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-        />
-
-        {/* Top Badges & Retry Control */}
-        <div className="absolute top-2.5 left-2.5 right-2.5 flex justify-between items-center z-20 pointer-events-none">
-          {views && (
-            <div className="bg-[#a82525] text-white px-2 py-0.5 rounded-full text-[10px] font-bold shadow flex items-center gap-1 backdrop-blur-xs">
-              <Eye className="w-3 h-3" />
-              <span>{views}</span>
-            </div>
-          )}
-
-          <div className="flex items-center gap-1.5 ml-auto pointer-events-auto">
-            {/* Auto-retry replay button */}
-            <button
-              type="button"
-              onClick={handleRetry}
-              aria-label="Replay / Retry video"
-              title="Replay / Retry video"
-              className="w-7 h-7 rounded-full bg-black/60 backdrop-blur-md text-white/90 flex items-center justify-center hover:bg-[#a82525] hover:text-white transition-all shadow-md cursor-pointer"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // CASE 2: Instagram (No autoplay, back to original interactive card)
+  // Unified interactive card (opens pop-up preview modal on click)
   if (isLoading) {
     return <VideoCardSkeleton isTopViewer={isTopViewer} className={className} />;
   }
