@@ -30,7 +30,7 @@ export const NavigationBar = () => {
       {/* Desktop Floating Pill Navigation at Bottom-Right Corner */}
       <nav
         aria-label="Primary Navigation"
-        className="hidden md:block fixed bottom-7 right-8 lg:bottom-9 lg:right-12 z-50 font-sans"
+        className="hidden md:block fixed bottom-7 right-8 lg:bottom-9 lg:right-12 z-[100] font-sans"
       >
         <ul className="flex items-center gap-1 lg:gap-1.5 bg-[#FAF9F6]/85 border border-[#014421]/15 rounded-full px-2.5 py-1.5 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
           {navLinks.map((link) => {
@@ -64,7 +64,7 @@ export const NavigationBar = () => {
 
       {/* Mobile Floating Hamburger Button at Bottom-Right Corner */}
       <button
-        className="md:hidden fixed bottom-6 right-6 z-50 flex flex-col justify-center items-center w-12 h-12 bg-[#FAF9F6]/95 backdrop-blur-md rounded-full border border-[#014421]/20 shadow-lg text-[#014421] focus:outline-none transition-transform active:scale-95"
+        className="md:hidden fixed bottom-6 right-6 z-[100] flex flex-col justify-center items-center w-12 h-12 bg-[#FAF9F6]/95 backdrop-blur-md rounded-full border border-[#014421]/20 shadow-lg text-[#014421] focus:outline-none transition-transform active:scale-95"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         aria-label="Toggle Menu"
       >
@@ -93,7 +93,7 @@ export const NavigationBar = () => {
 
       {/* Mobile Fullscreen Menu */}
       <div
-        className={`fixed top-0 left-0 w-full h-screen bg-[#FAF9F6]/98 backdrop-blur-xl z-40 transition-all duration-500 ease-in-out flex flex-col justify-center items-center font-sans ${
+        className={`fixed top-0 left-0 w-full h-screen bg-[#FAF9F6]/98 backdrop-blur-xl z-[90] transition-all duration-500 ease-in-out flex flex-col justify-center items-center font-sans ${
           isMenuOpen
             ? 'opacity-100 pointer-events-auto translate-y-0'
             : 'opacity-0 pointer-events-none translate-y-10'

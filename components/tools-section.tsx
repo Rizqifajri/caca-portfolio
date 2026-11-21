@@ -56,7 +56,7 @@ export const ToolsSection = () => {
         <div className="relative w-full max-w-[400px] md:max-w-[600px] aspect-square flex flex-col items-center justify-end">
 
           {/* The white paper */}
-          <div className="absolute bottom-16 md:bottom-32 w-[70%] h-[70%] z-50 flex flex-wrap justify-center content-start gap-4 md:gap-8">
+          <div className="absolute bottom-16 md:bottom-32 w-[70%] h-[70%] z-40 flex flex-wrap justify-center content-start gap-4 md:gap-8">
             <img src="/icons/canva-logo.svg" alt="Canva" className="software-logo w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain -rotate-12" />
             <img src="/icons/AE-logo.svg" alt="After Effects" className="software-logo w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain relative top-4 md:top-8" />
             <img src="/icons/davinci-logo.svg" alt="DaVinci Resolve" className="software-logo w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain rotate-12" />
