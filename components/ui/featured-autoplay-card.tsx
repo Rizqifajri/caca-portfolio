@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
-import { Volume2, VolumeX, Play, Pause, Sparkles } from 'lucide-react';
+import { Volume2, VolumeX, Play, Pause } from 'lucide-react';
 
 interface FeaturedAutoplayCardProps {
   videoSrc?: string;
@@ -136,14 +136,6 @@ export const FeaturedAutoplayCard: React.FC<FeaturedAutoplayCardProps> = ({
           className="h-full bg-[#a82525] transition-[width] duration-150 ease-linear"
           style={{ width: `${progress}%` }}
         />
-      </div>
-
-      {/* Top Left Status Badge */}
-      <div className="absolute top-3.5 left-3.5 z-20 pointer-events-none">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] md:text-xs font-mono tracking-wider font-semibold border border-white/10">
-          <Sparkles className="w-3 h-3 text-amber-300" />
-          LATEST EDIT
-        </span>
       </div>
 
       {/* Top Right Sound Toggle */}
