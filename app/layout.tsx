@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { NavigationBar } from "@/components/navigation-bar";
 import { Footer } from "@/components/footer";
+import { SpotifyPlaylist } from "@/components/spotify-playlist";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -39,6 +40,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <NavigationBar />
+        <SpotifyPlaylist />
         <main className="flex-grow">
           {children}
         </main>
