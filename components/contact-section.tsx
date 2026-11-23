@@ -30,21 +30,42 @@ export const ContactSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-24 gap-y-8 md:gap-y-12 text-center md:text-left text-[#008000] text-xl md:text-2xl font-sans font-medium">
           
           <div className="flex items-center justify-center md:justify-start">
-            <p>@cantikafitriani</p>
-          </div>
-          
-          <div className="flex items-center justify-center md:justify-start">
-            <a href="mailto:cantika@mail.com" className="underline underline-offset-4 decoration-1 hover:text-[#a82525] transition-colors">
-              cantika@mail.com
+            <a
+              href="https://instagram.com/cantikaaft"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#a82525] transition-colors"
+            >
+              @cantikaaft
             </a>
           </div>
           
           <div className="flex items-center justify-center md:justify-start">
-            <p>cantika fitriani</p>
+            <a href="mailto:cantikaefr@gmail.com" className="underline underline-offset-4 decoration-1 hover:text-[#a82525] transition-colors">
+              cantikaefr@gmail.com
+            </a>
           </div>
           
           <div className="flex items-center justify-center md:justify-start">
-            <p>+62 83894631800</p>
+            <a
+              href="https://www.linkedin.com/in/cantika-fitriani-2b2286271/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#a82525] transition-colors"
+            >
+              cantika fitriani
+            </a>
+          </div>
+          
+          <div className="flex items-center justify-center md:justify-start">
+            <a
+              href="https://wa.me/62882001300873"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#a82525] transition-colors"
+            >
+              +62882001300873
+            </a>
           </div>
 
         </div>

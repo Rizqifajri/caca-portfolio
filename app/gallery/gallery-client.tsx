@@ -156,8 +156,8 @@ export const GalleryClient: React.FC<GalleryClientProps> = ({ categories }) => {
               </p>
             </div>
             <div className="hidden lg:flex gap-4 text-xs font-medium text-gray-500 items-end">
-              <span className="cursor-pointer hover:text-black transition-colors">LinkedIn</span>
-              <span className="cursor-pointer hover:text-black transition-colors">Instagram</span>
+              <a href="https://www.linkedin.com/in/cantika-fitriani-2b2286271/" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-black transition-colors">LinkedIn</a>
+              <a href="https://instagram.com/cantikaaft" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-black transition-colors">Instagram</a>
               <span className="cursor-pointer hover:text-black transition-colors">X</span>
             </div>
           </div>
