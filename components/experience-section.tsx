@@ -11,7 +11,7 @@ export const ExperienceSection = () => {
   const experiences = [
     {
       id: 1,
-      role: 'Video Editor',
+      role: 'Multimedia Designer',
       company: 'Lanu Indonesia',
       period: '2026 - Present',
       description: 'Produced and edited engaging educational, motivational, and promotional short-form videos for Instagram Reels and TikTok, focusing on dynamic pacing and visual storytelling.',
