@@ -331,17 +331,15 @@ export const HeroSection = () => {
           {/* Left: Editorial Split Identity */}
           <Link
             href="/"
-            className="pointer-events-auto group flex items-center gap-3.5 md:gap-4 text-sm md:text-base lg:text-lg leading-[1.15] tracking-tight select-none"
+            className="pointer-events-auto group flex items-center gap-3 md:gap-3.5 text-sm md:text-base lg:text-lg leading-none tracking-tight select-none"
           >
-            <div className="text-right font-semibold text-[#014421] group-hover:text-[#a82525] transition-colors">
-              <span className="block">Cantika</span>
-              <span className="block">Fitriani</span>
-            </div>
-            <div className="h-9 md:h-11 w-[1.5px] bg-[#014421]/30 group-hover:bg-[#a82525]/50 transition-colors" />
-            <div className="text-left font-medium text-[#014421]/80">
-              <span className="block">Portfolio</span>
-              <span className="block text-[#a82525] font-semibold">2026</span>
-            </div>
+            <span className="font-semibold text-[#014421] group-hover:text-[#a82525] transition-colors">
+              Cantika
+            </span>
+            <div className="h-5 md:h-6 w-[1.5px] bg-[#014421]/30 group-hover:bg-[#a82525]/50 transition-colors" />
+            <span className="font-semibold text-[#a82525] group-hover:text-[#014421] transition-colors">
+              Portfolio
+            </span>
           </Link>
 
           {/* Right: Bold Stacked "Get In Touch" Lockup with Dot Matrix Accent */}
