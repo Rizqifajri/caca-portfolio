@@ -1,11 +1,15 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import gsap from 'gsap';
+import { ArrowUpLeft, ArrowUpRight } from 'lucide-react';
 
 export const NavigationBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const mobileOverlayRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
   // Close menu when resizing to desktop
   useEffect(() => {
@@ -17,6 +21,94 @@ export const NavigationBar = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  // GSAP circular expanding reveal transition for mobile menu
+  useEffect(() => {
+    const overlay = mobileOverlayRef.current;
+    if (!overlay) return;
+
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      gsap.set(overlay, {
+        clipPath: 'circle(0px at calc(100% - 48px) calc(100% - 48px))',
+        visibility: 'hidden',
+        pointerEvents: 'none',
+      });
+      return;
+    }
+
+    if (isMenuOpen) {
+      gsap.set(overlay, { visibility: 'visible', pointerEvents: 'auto' });
+      gsap.fromTo(
+        overlay,
+        { clipPath: 'circle(24px at calc(100% - 48px) calc(100% - 48px))' },
+        {
+          clipPath: 'circle(150% at calc(100% - 48px) calc(100% - 48px))',
+          duration: 0.65,
+          ease: 'expo.inOut',
+          overwrite: 'auto',
+        }
+      );
+
+      gsap.fromTo(
+        overlay.querySelectorAll('.mobile-nav-item'),
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.55,
+          stagger: 0.07,
+          delay: 0.2,
+          ease: 'power3.out',
+          overwrite: 'auto',
+        }
+      );
+
+      gsap.fromTo(
+        overlay.querySelectorAll('.mobile-nav-meta'),
+        { y: 15, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.45,
+          delay: 0.3,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        }
+      );
+    } else {
+      gsap.to(overlay.querySelectorAll('.mobile-nav-item, .mobile-nav-meta'), {
+        y: 16,
+        opacity: 0,
+        duration: 0.2,
+        ease: 'power2.in',
+        overwrite: 'auto',
+      });
+
+      gsap.to(overlay, {
+        clipPath: 'circle(0px at calc(100% - 48px) calc(100% - 48px))',
+        duration: 0.5,
+        delay: 0.05,
+        ease: 'expo.inOut',
+        overwrite: 'auto',
+        onComplete: () => {
+          gsap.set(overlay, { visibility: 'hidden', pointerEvents: 'none' });
+        },
+      });
+    }
+  }, [isMenuOpen]);
 
   const navLinks = [
     { num: '01', name: 'Home', href: '/' },
@@ -62,78 +154,89 @@ export const NavigationBar = () => {
         </ul>
       </nav>
 
-      {/* Mobile Floating Hamburger Button at Bottom-Right Corner */}
+      {/* Mobile Floating Circular Arrow Button at Bottom-Right Corner */}
       <button
-        className="md:hidden fixed bottom-6 right-6 z-[100] flex flex-col justify-center items-center w-12 h-12 bg-[#FAF9F6]/95 backdrop-blur-md rounded-full border border-[#014421]/20 shadow-lg text-[#014421] focus:outline-none transition-transform active:scale-95"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        aria-label="Toggle Menu"
-      >
-        <div className="relative w-4 h-3.5 flex flex-col justify-between">
-          <span
-            className={`w-full h-[2px] bg-[#014421] rounded-full transform transition-all duration-300 origin-left ${
-              isMenuOpen
-                ? 'rotate-45 translate-x-[1px] -translate-y-[1px] bg-[#a82525]'
-                : ''
-            }`}
-          />
-          <span
-            className={`w-full h-[2px] bg-[#014421] rounded-full transform transition-all duration-300 ${
-              isMenuOpen ? 'opacity-0 scale-0' : 'opacity-100'
-            }`}
-          />
-          <span
-            className={`w-full h-[2px] bg-[#014421] rounded-full transform transition-all duration-300 origin-left ${
-              isMenuOpen
-                ? '-rotate-45 translate-x-[1px] translate-y-[1px] bg-[#a82525]'
-                : ''
-            }`}
-          />
-        </div>
-      </button>
-
-      {/* Mobile Fullscreen Menu */}
-      <div
-        className={`fixed top-0 left-0 w-full h-screen bg-[#FAF9F6]/98 backdrop-blur-xl z-[90] transition-all duration-500 ease-in-out flex flex-col justify-center items-center font-sans ${
+        type="button"
+        onClick={() => setIsMenuOpen((prev) => !prev)}
+        aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
+        className={`md:hidden fixed bottom-6 right-6 z-[110] flex items-center justify-center w-12 h-12 rounded-full shadow-[0_8px_25px_rgba(0,0,0,0.18)] focus:outline-none transition-all duration-300 active:scale-90 cursor-pointer ${
           isMenuOpen
-            ? 'opacity-100 pointer-events-auto translate-y-0'
-            : 'opacity-0 pointer-events-none translate-y-10'
+            ? 'bg-[#014421] text-[#FAF9F6]'
+            : 'bg-[#a82525] text-[#FAF9F6] border border-white/20'
         }`}
       >
-        <ul className="flex flex-col items-center gap-6">
-          {navLinks.map((link, index) => (
-            <li
-              key={link.name}
-              style={{
-                transitionDelay: `${isMenuOpen ? index * 80 : 0}ms`,
-                transform: isMenuOpen ? 'translateY(0)' : 'translateY(20px)',
-                opacity: isMenuOpen ? 1 : 0,
-              }}
-              className="transition-all duration-500 ease-out"
-            >
-              <Link
-                href={link.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="flex items-baseline gap-2 text-2xl font-semibold tracking-tight text-[#014421] hover:text-[#a82525] transition-colors"
-              >
-                <span className="text-xs font-mono text-[#a82525]">
-                  {link.num}
-                </span>
-                <span>{link.name}</span>
-              </Link>
-            </li>
-          ))}
+        <ArrowUpLeft
+          className={`w-5 h-5 transition-transform duration-300 ${
+            isMenuOpen ? 'rotate-180' : 'rotate-0'
+          }`}
+        />
+      </button>
+
+      {/* Mobile Fullscreen Circular-Reveal Menu */}
+      <div
+        ref={mobileOverlayRef}
+        className="md:hidden fixed inset-0 z-[105] bg-[#FAF9F6] flex flex-col justify-between px-7 pt-10 pb-24 font-sans overflow-hidden"
+      >
+        {/* Top Editorial Meta */}
+        <div className="mobile-nav-meta flex items-center justify-between border-b border-[#014421]/15 pb-4">
+          <span className="text-xs font-sans font-semibold uppercase tracking-widest text-[#014421]/60">
+            Navigation
+          </span>
+          <span className="text-xs font-sans font-semibold uppercase tracking-widest text-[#a82525]">
+            Cantika Portfolio
+          </span>
+        </div>
+
+        {/* Large Bold Editorial Menu Items */}
+        <ul className="flex flex-col gap-5 my-auto">
+          {navLinks.map((link) => {
+            const isActive =
+              pathname === link.href ||
+              (link.href !== '/' && pathname?.startsWith(link.href));
+
+            return (
+              <li key={link.name} className="mobile-nav-item">
+                <Link
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="group flex items-baseline justify-between py-1 border-b border-[#014421]/10"
+                >
+                  <div className="flex items-baseline gap-4">
+                    <span className="text-sm font-sans font-semibold text-[#a82525]">
+                      {link.num}
+                    </span>
+                    <span
+                      className={`text-5xl sm:text-6xl font-cursive italic tracking-tight transition-colors duration-200 ${
+                        isActive
+                          ? 'text-[#a82525]'
+                          : 'text-[#014421] group-hover:text-[#a82525]'
+                      }`}
+                    >
+                      {link.name}
+                    </span>
+                  </div>
+
+                  <ArrowUpRight
+                    className={`w-6 h-6 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1 ${
+                      isActive ? 'text-[#a82525]' : 'text-[#014421]/40'
+                    }`}
+                  />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
-        {/* Decorative element for mobile menu */}
-        <div
-          className={`absolute bottom-16 transition-all duration-700 delay-300 ${
-            isMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
-          }`}
-        >
+        {/* Bottom Identity & Sunflower Accent */}
+        <div className="mobile-nav-meta flex items-center justify-between pt-4 border-t border-[#014421]/15">
+          <div>
+            <p className="text-sm font-semibold text-[#014421]">Cantika Fitriani</p>
+            <p className="text-xs text-[#014421]/60">Creative Video Editor</p>
+          </div>
           <img
             src="/icons/sun-flower.svg"
-            alt="flower"
-            className="w-14 h-14 opacity-80"
+            alt="Sunflower"
+            className="w-10 h-10 opacity-85"
           />
         </div>
       </div>

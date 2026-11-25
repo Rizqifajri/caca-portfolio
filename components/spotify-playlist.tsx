@@ -268,7 +268,7 @@ export const SpotifyPlaylist = () => {
       {/* Expanded Spotify-Style Audio Player Card (animated with GSAP) */}
       <div
         ref={cardRef}
-        className="mb-3 w-[300px] sm:w-[325px] bg-[#FAF9F6]/95 backdrop-blur-xl border border-[#014421]/15 rounded-2xl shadow-[0_16px_45px_rgba(0,0,0,0.14)] overflow-hidden will-change-transform"
+        className="mb-3 w-[calc(100vw-3rem)] max-w-[325px] bg-[#FAF9F6]/95 backdrop-blur-xl border border-[#014421]/15 rounded-2xl shadow-[0_16px_45px_rgba(0,0,0,0.14)] overflow-hidden will-change-transform"
       >
         {/* Header */}
         <div className="player-stagger flex items-center justify-between px-4 py-2.5 border-b border-[#014421]/10">
@@ -383,7 +383,7 @@ export const SpotifyPlaylist = () => {
       </div>
 
       {/* Floating Collapsed Pill Trigger */}
-      <div className="flex items-center gap-1 bg-[#FAF9F6]/85 hover:bg-[#FAF9F6] border border-[#014421]/15 rounded-full p-1.5 pr-3 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
+      <div className="inline-flex w-fit items-center gap-1 bg-[#FAF9F6]/85 hover:bg-[#FAF9F6] border border-[#014421]/15 rounded-full p-1.5 pr-3 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
         <button
           type="button"
           onClick={togglePlay}
